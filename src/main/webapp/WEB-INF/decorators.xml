@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/decorators">
+	<decorator name="menu" page="menu.jsp">
+		<pattern>*.html</pattern>
+	</decorator>
+	<excludes>
+		<pattern>/img/*</pattern>
+		<pattern>/css/*</pattern>
+		<pattern>*.js</pattern>
+	</excludes>
+</decorators>

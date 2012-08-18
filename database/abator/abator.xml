@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+  <classPathEntry location="../migrate/drivers/mysql-connector-java-5.1.21.jar" />
+  <context id="DB2Tables" targetRuntime="MyBatis3">
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+        connectionURL="jdbc:mysql://localhost:3306/sicomoro"
+        userId="root"
+        password="toor">
+    </jdbcConnection>
+    <javaTypeResolver >
+      <property name="forceBigDecimals" value="false" />
+    </javaTypeResolver>
+
+    <javaModelGenerator targetPackage="org.iemm.sicomoro.db.dao" targetProject="../../src/main/java">
+      <property name="enableSubPackages" value="true" />
+      <property name="trimStrings" value="true" />
+    </javaModelGenerator>
+
+    <sqlMapGenerator targetPackage="org.iemm.sicomoro.db.xml"  targetProject="../../src/main/java">
+      <property name="enableSubPackages" value="true" />
+    </sqlMapGenerator>
+
+    <javaClientGenerator type="MIXEDMAPPER" targetPackage="org.iemm.sicomoro.db.client"  targetProject="../../src/main/java">
+      <property name="enableSubPackages" value="true" />
+    </javaClientGenerator>
+
+    <table schema="sicomoro" tableName="corte" domainObjectName="Corte" >
+      <property name="useActualColumnNames" value="true"/>
+      <generatedKey column="idCorte" sqlStatement="MySql" identity="true" />
+    </table>
+  </context>
+</generatorConfiguration>

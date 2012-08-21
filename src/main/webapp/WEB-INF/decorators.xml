@@ -4,8 +4,7 @@
 		<pattern>*.html</pattern>
 	</decorator>
 	<excludes>
-		<pattern>/img/*</pattern>
-		<pattern>/css/*</pattern>
+		<pattern>/resources/*</pattern>
 		<pattern>*.js</pattern>
 	</excludes>
 </decorators>

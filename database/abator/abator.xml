@@ -32,5 +32,9 @@
       <property name="useActualColumnNames" value="true"/>
       <generatedKey column="idCorte" sqlStatement="MySql" identity="true" />
     </table>
+    <table schema="sicomoro" tableName="contributor" domainObjectName="Contributor" >
+      <property name="useActualColumnNames" value="true"/>
+      <generatedKey column="idContributor" sqlStatement="MySql" identity="true" />
+    </table>
   </context>
 </generatorConfiguration>

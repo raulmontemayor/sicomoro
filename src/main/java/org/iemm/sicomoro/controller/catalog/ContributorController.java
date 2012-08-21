@@ -75,22 +75,14 @@ public class ContributorController {
 				contributorService.find(idContributor));
 		return "/jsp/catalog/contributor/newAndEdit.jsp";
 	}
-	@RequestMapping("/save")
+
+	@RequestMapping(value = { "/save", "/**/save.html" })
 	public String saveNewObject(@ModelAttribute Contributor contributor,
 			Model model) {
 		contributorService.save(contributor);
-		return "redirect:/catalog/contributor/" + contributor.getIdContributor()
-				+ "/edit.html";
+		return "redirect:/catalog/contributor/"
+				+ contributor.getIdContributor() + "/edit.html";
 	}
-	// TODO ver la forma de mapear dos url a la misma funcion
-	@RequestMapping("/**/save.html")
-	public String saveObject(@ModelAttribute Contributor contributor,
-			Model model) {
-		contributorService.save(contributor);
-		return "redirect:/catalog/contributor/" + contributor.getIdContributor()
-				+ "/edit.html";
-	}
-	
 
 	/**
 	 * @return the contributorService

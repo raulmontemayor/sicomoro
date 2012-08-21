@@ -33,7 +33,6 @@ public class ContributorController {
 	@RequestMapping("/all")
 	public ModelAndView all(HttpServletRequest request, ModelAndView model) {
 		LOG.trace("ContributorController.all");
-		org.apache.log4j.Logger.getLogger(ContributorController.class).debug("Log4j Configurado");
 		final TableModel tableModel = new TableModel("contributorTable", request);
 		tableModel.setItems(contributorService.getAll());
 
@@ -65,12 +64,14 @@ public class ContributorController {
 
 	@RequestMapping("/new")
 	public String newObject(Model model) {
+		LOG.trace("ContributorController.new");
 		model.addAttribute("contributor", new Contributor());
 		return "/jsp/catalog/contributor/newAndEdit.jsp";
 	}
 
 	@RequestMapping("/{idContributor}/edit")
 	public String editObject(@PathVariable Integer idContributor, Model model) {
+		LOG.trace("ContributorController.edit");
 		model.addAttribute("contributor",
 				contributorService.find(idContributor));
 		return "/jsp/catalog/contributor/newAndEdit.jsp";
@@ -79,6 +80,7 @@ public class ContributorController {
 	@RequestMapping(value = { "/save", "/**/save.html" })
 	public String saveNewObject(@ModelAttribute Contributor contributor,
 			Model model) {
+		LOG.trace("ContributorController.save");
 		contributorService.save(contributor);
 		return "redirect:/catalog/contributor/"
 				+ contributor.getIdContributor() + "/edit.html";

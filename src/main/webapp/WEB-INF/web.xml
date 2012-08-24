@@ -5,7 +5,7 @@
 	<display-name>Sicomoro</display-name>
 	<context-param>
 		<param-name>jmesaPreferencesLocation</param-name>
-		<param-value>WEB-INF/jmesa.properties</param-value>
+		<param-value>WEB-INF/classes/jmesa.properties</param-value>
 	</context-param>
 	<filter>
 		<filter-name>sitemesh</filter-name>

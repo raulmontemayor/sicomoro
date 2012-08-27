@@ -24,7 +24,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
+			<version>4.10</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -223,5 +223,22 @@
 	</dependencies>
 	<build>
 		<finalName>sicomoro</finalName>
+		<!-- <plugins>
+			<plugin>
+				<groupId>org.mybatis.maven</groupId>
+				<artifactId>maven-migration-plugin</artifactId>
+				<version>1.0.0</version>
+				<configuration>
+					<repository>/database/migrate/</repository>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>mysql</groupId>
+						<artifactId>mysql-connector-java</artifactId>
+						<version>5.1.21</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins> -->
 	</build>
 </project>

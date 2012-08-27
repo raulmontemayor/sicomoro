@@ -13,6 +13,9 @@
 			<url>http://download.java.net/maven/2/</url>
 		</repository>
 	</repositories>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 
 	<dependencies>
 		<dependency>
@@ -223,22 +226,9 @@
 	</dependencies>
 	<build>
 		<finalName>sicomoro</finalName>
-		<!-- <plugins>
-			<plugin>
-				<groupId>org.mybatis.maven</groupId>
-				<artifactId>maven-migration-plugin</artifactId>
-				<version>1.0.0</version>
-				<configuration>
-					<repository>/database/migrate/</repository>
-				</configuration>
-				<dependencies>
-					<dependency>
-						<groupId>mysql</groupId>
-						<artifactId>mysql-connector-java</artifactId>
-						<version>5.1.21</version>
-					</dependency>
-				</dependencies>
-			</plugin>
-		</plugins> -->
+		<!-- <plugins> <plugin> <groupId>org.mybatis.maven</groupId> <artifactId>maven-migration-plugin</artifactId> 
+			<version>1.0.0</version> <configuration> <repository>/database/migrate/</repository> 
+			</configuration> <dependencies> <dependency> <groupId>mysql</groupId> <artifactId>mysql-connector-java</artifactId> 
+			<version>5.1.21</version> </dependency> </dependencies> </plugin> </plugins> -->
 	</build>
 </project>

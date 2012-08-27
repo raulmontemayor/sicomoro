@@ -6,10 +6,10 @@
 <generatorConfiguration>
   <classPathEntry location="../migrate/drivers/mysql-connector-java-5.1.21.jar" />
   <context id="DB2Tables" targetRuntime="MyBatis3">
-    <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-        connectionURL="jdbc:mysql://localhost:3306/sicomoro"
-        userId="root"
-        password="toor">
+    <jdbcConnection driverClass="${db.driver}"
+        connectionURL="${db.url}"
+        userId="${db.username}"
+        password="${db.password}">
     </jdbcConnection>
     <javaTypeResolver >
       <property name="forceBigDecimals" value="false" />

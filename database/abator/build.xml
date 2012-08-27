@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE project>
+<project name="abator" basedir="." default="generate">
+
+	<!-- Build classpath -->
+	<path id="classpath">
+		<pathelement location="." />
+		<fileset dir=".">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+	
+	<property file="../../src/main/resources/jdbc.properties"/>
+
+	<target name="generate" description="Generate myBatis Code">
+		<taskdef name="abator" classname="org.mybatis.generator.ant.GeneratorAntTask" classpathref="classpath" />
+		<abator overwrite="true" configfile="abator.xml" verbose="true">
+			<propertyset>
+				<propertyref name="db.driver" />
+				<propertyref name="db.url" />
+				<propertyref name="db.username" />
+				<propertyref name="db.password" />
+			</propertyset>
+		</abator>
+	</target>
+
+</project>

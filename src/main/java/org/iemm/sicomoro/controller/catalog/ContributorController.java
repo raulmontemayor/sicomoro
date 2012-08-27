@@ -78,7 +78,7 @@ public class ContributorController {
 	}
 
 	@RequestMapping(value = { "/save", "/**/save.html" })
-	public String saveNewObject(@ModelAttribute Contributor contributor,
+	public String saveObject(@ModelAttribute Contributor contributor,
 			Model model) {
 		LOG.trace("ContributorController.save");
 		contributorService.save(contributor);

@@ -2,7 +2,6 @@ package org.iemm.sicomoro.controller.catalog;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.logging.Log;
 import org.iemm.sicomoro.controller.jmesa.ImageCellEditor;
 import org.iemm.sicomoro.db.dao.Contributor;
 import org.iemm.sicomoro.service.ContributorService;

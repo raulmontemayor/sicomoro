@@ -6,6 +6,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Sicomoro <decorator:title /></title>
+<link rel="stylesheet" href="/sicomoro/resources/blueprint/screen.css" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="/sicomoro/resources/blueprint/print.css" type="text/css" media="print">
+<!--[if lt IE 8]>
+  <link rel="stylesheet" href="/sicomoro/resources/blueprint/ie.css" type="text/css" media="screen, projection">
+<![endif]-->
 <link rel="stylesheet" href="/sicomoro/resources/pepper-grinder/jquery-ui-1.8.22.custom.css"></link>
 <link rel="stylesheet" href="/sicomoro/resources/jmesa/jmesa.css"></link>
 <script type="text/javascript" src="/sicomoro/js/jquery-1.7.2.min.js"></script>
@@ -15,8 +20,15 @@
 <decorator:head />
 </head>
 <body>
-	<a href="/sicomoro/catalog/contributor/all.html">Catalogo Contribuidores</a>
-	<br />
-	<decorator:body />
+	<div class="container">
+		<div class="span-24 large">
+			<a href="/sicomoro/catalog/contributor/all.html">Catalogo Contribuidores</a>
+		</div>
+		<div class="span-24"><decorator:title /></div>
+		<div class="span-4"></div>
+		<div class="span-20 last">
+			<decorator:body />
+		</div>
+	</div>
 </body>
 </html>

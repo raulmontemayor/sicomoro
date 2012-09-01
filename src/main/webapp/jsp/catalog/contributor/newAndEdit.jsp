@@ -6,18 +6,32 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Catalogo de contribuidores</title>
+<title>Editar contribuidor</title>
 </head>
 <body>
-	<form:form action="save.html" commandName="contributor">
-		<form:hidden path="idContributor" />
-		<form:label path="name">Nombre:</form:label><form:input path="name" />
-		<br />
-		<form:label path="lastName">Apellido Paterno:</form:label><form:input path="lastName" />
-		<br />
-		<form:label path="secondLastName">Apellido Materno:</form:label><form:input path="secondLastName" />
-		<br />
-		<form:button>Guardar</form:button>
-	</form:form>
+		<form:form action="save.html" commandName="contributor">
+			<form:hidden path="idContributor" />
+			<div class="span-16">
+				<form:label path="name">Nombre:</form:label>
+			</div>
+			<div class="span-16">
+				<form:input path="name" />
+			</div>
+			<div class="span-16">
+				<form:label path="lastName">Apellido Paterno:</form:label>
+			</div>
+			<div class="span-16">
+				<form:input path="lastName" />
+			</div>
+			<div class="span-16">
+				<form:label path="secondLastName">Apellido Materno:</form:label>
+			</div>
+			<div class="span-16">
+				<form:input path="secondLastName" />
+			</div>
+			<div class="span-16">
+				<form:button>Guardar</form:button>
+			</div>
+		</form:form>
 </body>
 </html>

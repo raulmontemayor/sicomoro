@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Listado de contribuidores</title>
+<title><spring:message code="contributor.list.title" /></title>
 <script type="text/javascript">
 	function goToEdit(idContributor) {
 		window.location.href = "/sicomoro/catalog/contributor/" + idContributor + "/edit.html";
@@ -19,7 +19,7 @@
 </script>
 </head>
 <body>
-	<input type="button" onClick="location.href='/sicomoro/catalog/contributor/new.html'" value="Añadir Nuevo Contribuidor">
+	<input type="button" onClick="location.href='/sicomoro/catalog/contributor/new.html'" value="<spring:message code="form.new" />">
 	${table}
 </body>
 </html>

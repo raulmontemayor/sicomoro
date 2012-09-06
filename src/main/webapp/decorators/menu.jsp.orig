@@ -6,7 +6,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="icon" type="image/x-icon" href="/sicomoro/resources/favicon.ico" />
 <title>Sicomoro <decorator:title /></title>
 <link rel="stylesheet" href="/sicomoro/resources/blueprint/screen.css" type="text/css" media="screen, projection">
 <link rel="stylesheet" href="/sicomoro/resources/blueprint/print.css" type="text/css" media="print">
@@ -24,9 +23,13 @@
 <body>
 	<div class="container">
 		<div class="span-24 large">
+<<<<<<< Updated upstream
+			<a href="/sicomoro/catalog/contributor/all.html">Catalogo Contribuidores</a>
+			<a href="/sicomoro/logout.html">Salir</a>
+=======
 			<a href="/sicomoro/catalog/contributor/all.html"><spring:message code="menu.catalog.contributor" /></a>
 			<a href="/sicomoro/movement/new.html"><spring:message code="menu.movement.title" /></a>
-			<a href="/sicomoro/logout.html"><spring:message code="menu.logout" /></a>
+>>>>>>> Stashed changes
 		</div>
 		<div class="span-24"><decorator:title /></div>
 		<div class="span-4"></div>

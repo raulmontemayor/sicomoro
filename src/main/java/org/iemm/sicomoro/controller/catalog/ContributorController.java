@@ -12,6 +12,8 @@ import org.jmesa.view.html.component.HtmlTable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -25,6 +27,9 @@ public class ContributorController {
 
 	@Autowired
 	private ContributorService contributorService;
+	
+	@Autowired
+	private MessageSource resource;
 	
 	private Logger LOG = LoggerFactory.getLogger(ContributorController.class);
 
@@ -47,10 +52,11 @@ public class ContributorController {
 		htmlRow.addColumn(lastName);
 		
 		final HtmlColumn secondLastName = new HtmlColumn("secondLastName");
+		secondLastName.setTitle(resource.getMessage("contributor.form.secondLastName", null, LocaleContextHolder.getLocale()));
 		htmlRow.addColumn(secondLastName);
 
 		final HtmlColumn edit = new HtmlColumn("idContributor");
-		edit.setTitle("Editar");
+		edit.setTitle(resource.getMessage("form.edit", null, LocaleContextHolder.getLocale()));
 		edit.setCellEditor(new ImageCellEditor("/sicomoro/resources/accessories-text-editor.png", "goToEdit"));
 		htmlRow.addColumn(edit);
 		
@@ -89,7 +95,7 @@ public class ContributorController {
 		return "redirect:/catalog/contributor/all.html";
 	}
 
-	@RequestMapping(value = { "/save", "/**/save.html" })
+	@RequestMapping(value = { "/save", "/**/save" })
 	public String saveObject(@ModelAttribute Contributor contributor,
 			Model model) {
 		LOG.trace("ContributorController.save");
@@ -111,4 +117,19 @@ public class ContributorController {
 	public void setContributorService(ContributorService contributorService) {
 		this.contributorService = contributorService;
 	}
+
+	/**
+	 * @return the resource
+	 */
+	public MessageSource getResource() {
+		return resource;
+	}
+
+	/**
+	 * @param resource the resource to set
+	 */
+	public void setResource(MessageSource resource) {
+		this.resource = resource;
+	}
+
 }

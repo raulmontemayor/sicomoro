@@ -11,10 +11,15 @@
 	function goToEdit(idContributor) {
 		window.location.href = "/sicomoro/catalog/contributor/" + idContributor + "/edit.html";
 	}
+	
+	function delId(idContributor) {
+		if(confirm('Borrar registro?'))
+			window.location.href = "/sicomoro/catalog/contributor/" + idContributor + "/delete.html";
+	}
 </script>
 </head>
 <body>
+	<input type="button" onClick="location.href='/sicomoro/catalog/contributor/new.html'" value="Añadir Nuevo Contribuidor">
 	${table}
-	<a href="/sicomoro/catalog/contributor/new.html">Nuevo</a>
 </body>
 </html>

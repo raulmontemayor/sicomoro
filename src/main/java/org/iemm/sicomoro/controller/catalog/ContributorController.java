@@ -53,6 +53,11 @@ public class ContributorController {
 		edit.setTitle("Editar");
 		edit.setCellEditor(new ImageCellEditor("/sicomoro/resources/accessories-text-editor.png", "goToEdit"));
 		htmlRow.addColumn(edit);
+		
+		final HtmlColumn delete = new HtmlColumn("idContributor");
+		delete.setTitle("Delete?");
+		delete.setCellEditor(new ImageCellEditor("/sicomoro/resources/edit-delete.png", "delId"));
+		htmlRow.addColumn(delete);
 
 		tableModel.setTable(htmlTable);
  
@@ -75,14 +80,21 @@ public class ContributorController {
 				contributorService.find(idContributor));
 		return "/jsp/catalog/contributor/newAndEdit.jsp";
 	}
+	
+	@RequestMapping("/{idContributor}/delete")
+	public String deleteObject(@PathVariable Integer idContributor, Model model) {
+		LOG.trace("ContributorController.delete");
+		model.addAttribute("contributor",
+				contributorService.delete(idContributor));
+		return "redirect:/catalog/contributor/all.html";
+	}
 
 	@RequestMapping(value = { "/save", "/**/save.html" })
 	public String saveObject(@ModelAttribute Contributor contributor,
 			Model model) {
 		LOG.trace("ContributorController.save");
 		contributorService.save(contributor);
-		return "redirect:/catalog/contributor/"
-				+ contributor.getIdContributor() + "/edit.html";
+		return "redirect:/catalog/contributor/all.html";
 	}
 
 	/**

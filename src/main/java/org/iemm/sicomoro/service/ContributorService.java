@@ -45,6 +45,12 @@ public class ContributorService {
 		Validate.notNull(idContributor);
 		return contributorMapper.selectByPrimaryKey(idContributor);
 	}
+	
+	public int delete(Integer idContributor) {
+		Validate.notNull(idContributor);
+		return contributorMapper.deleteByPrimaryKey(idContributor);
+	}
+
 
 	/**
 	 * Obtiene la lista de todos los contribuidores

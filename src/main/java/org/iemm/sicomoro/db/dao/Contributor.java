@@ -194,4 +194,5 @@ public class Contributor {
     public void setUpdateDate(Date updateDate) {
         this.updateDate = updateDate;
     }
+    
 }

@@ -4,6 +4,9 @@
 		<pattern>*.html</pattern>
 	</decorator>
 	<excludes>
+		<pattern>/loginfailed.html</pattern>
+		<pattern>/login.html</pattern>
+		<pattern>/logout.html</pattern>
 		<pattern>/resources/*</pattern>
 		<pattern>*.js</pattern>
 	</excludes>

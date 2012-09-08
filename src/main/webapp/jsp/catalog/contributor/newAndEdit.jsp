@@ -6,31 +6,31 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Editar contribuidor</title>
+<title><spring:message code="contributor.edit.title" /></title>
 </head>
 <body>
 		<form:form action="save.html" commandName="contributor">
 			<form:hidden path="idContributor" />
 			<div class="span-16">
-				<form:label path="name">Nombre:</form:label>
+				<form:label path="name"><spring:message code="contributor.form.name" /></form:label>
 			</div>
 			<div class="span-16">
 				<form:input path="name" />
 			</div>
 			<div class="span-16">
-				<form:label path="lastName">Apellido Paterno:</form:label>
+				<form:label path="lastName"><spring:message code="contributor.form.lastName" /></form:label>
 			</div>
 			<div class="span-16">
 				<form:input path="lastName" />
 			</div>
 			<div class="span-16">
-				<form:label path="secondLastName">Apellido Materno:</form:label>
+				<form:label path="secondLastName"><spring:message code="contributor.form.secondLastName" /></form:label>
 			</div>
 			<div class="span-16">
 				<form:input path="secondLastName" />
 			</div>
 			<div class="span-16">
-				<form:button>Guardar</form:button>
+				<form:button><spring:message code="form.save" /></form:button>
 			</div>
 		</form:form>
 </body>

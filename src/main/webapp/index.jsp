@@ -4,6 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="icon" type="image/x-icon" href="/sicomoro/resources/favicon.ico" />
 <link rel="stylesheet" href="/sicomoro/resources/blueprint/screen.css"
 	type="text/css" media="screen, projection">
 <link rel="stylesheet" href="/sicomoro/resources/blueprint/print.css"

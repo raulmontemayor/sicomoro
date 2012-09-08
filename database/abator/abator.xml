@@ -15,26 +15,55 @@
       <property name="forceBigDecimals" value="false" />
     </javaTypeResolver>
 
-    <javaModelGenerator targetPackage="org.iemm.sicomoro.db.dao" targetProject="../../src/main/java">
-      <property name="enableSubPackages" value="true" />
-      <property name="trimStrings" value="true" />
-    </javaModelGenerator>
+		<javaModelGenerator targetPackage="org.iemm.sicomoro.db.dao"
+			targetProject="../../src/main/java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
 
-    <sqlMapGenerator targetPackage="org.iemm.sicomoro.db.xml"  targetProject="../../src/main/java">
-      <property name="enableSubPackages" value="true" />
-    </sqlMapGenerator>
+		<sqlMapGenerator targetPackage="org.iemm.sicomoro.db.xml"
+			targetProject="../../src/main/java">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
 
-    <javaClientGenerator type="MIXEDMAPPER" targetPackage="org.iemm.sicomoro.db.client"  targetProject="../../src/main/java">
-      <property name="enableSubPackages" value="true" />
-    </javaClientGenerator>
+		<javaClientGenerator type="MIXEDMAPPER"
+			targetPackage="org.iemm.sicomoro.db.client" targetProject="../../src/main/java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
 
-    <table schema="sicomoro" tableName="corte" domainObjectName="Corte" >
-      <property name="useActualColumnNames" value="true"/>
-      <generatedKey column="idCorte" sqlStatement="MySql" identity="true" />
-    </table>
-    <table schema="sicomoro" tableName="contributor" domainObjectName="Contributor" >
-      <property name="useActualColumnNames" value="true"/>
-      <generatedKey column="idContributor" sqlStatement="MySql" identity="true" />
-    </table>
-  </context>
+		<table schema="sicomoro" tableName="movement" domainObjectName="Movement">
+			<property name="useActualColumnNames" value="true" />
+			<generatedKey column="idMovement" sqlStatement="MySql"
+				identity="true" />
+		</table>
+		<table schema="sicomoro" tableName="movementCut"
+			domainObjectName="MovementCut">
+			<property name="useActualColumnNames" value="true" />
+			<generatedKey column="idMovementCut" sqlStatement="MySql"
+				identity="true" />
+		</table>
+		<table schema="sicomoro" tableName="movementType"
+			domainObjectName="MovementType">
+			<property name="useActualColumnNames" value="true" />
+			<generatedKey column="idMovementType" sqlStatement="MySql"
+				identity="true" />
+		</table>
+		<table schema="sicomoro" tableName="contributor"
+			domainObjectName="Contributor">
+			<property name="useActualColumnNames" value="true" />
+			<generatedKey column="idContributor" sqlStatement="MySql"
+				identity="true" />
+		</table>
+		<table schema="sicomoro" tableName="tax" domainObjectName="Tax">
+			<property name="useActualColumnNames" value="true" />
+			<generatedKey column="idTax" sqlStatement="MySql"
+				identity="true" />
+		</table>
+		<table schema="sicomoro" tableName="catalog"
+			domainObjectName="Catalog">
+			<property name="useActualColumnNames" value="true" />
+			<generatedKey column="idCatalog" sqlStatement="MySql"
+				identity="true" />
+		</table>
+	</context>
 </generatorConfiguration>

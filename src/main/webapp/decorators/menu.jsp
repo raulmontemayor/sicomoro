@@ -23,6 +23,7 @@
 	<div class="container">
 		<div class="span-24 large">
 			<a href="/sicomoro/catalog/contributor/all.html">Catalogo Contribuidores</a>
+			<a href="/sicomoro/logout.html">Salir</a>
 		</div>
 		<div class="span-24"><decorator:title /></div>
 		<div class="span-4"></div>

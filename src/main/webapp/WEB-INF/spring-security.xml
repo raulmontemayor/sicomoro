@@ -5,12 +5,13 @@
 	http://www.springframework.org/schema/security
 	http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 
+  	<http pattern="/login.html*" security="none"/>
+  	<http pattern="/resources*" security="none"/>
+
 	<http auto-config="true">
-		<intercept-url pattern="/catalog/contributor/all.html*"
-			method="GET" access="ROLE_USER" />
-		<intercept-url pattern="/catalog/contributor/all.html*"
-			method="POST" access="ROLE_USER" />
-		<intercept-url pattern="/welcome.html*" access="ROLE_USER" />
+		<!-- <intercept-url pattern="/catalog/**" access="ROLE_SUPERVISOR" /> -->
+		
+		<intercept-url pattern="/**" access="ROLE_USER" />
 		<form-login login-page="/login.html" default-target-url="/welcome.html"
 			authentication-failure-url="/loginfailed.html" />
 		<logout logout-success-url="/logout.html" />

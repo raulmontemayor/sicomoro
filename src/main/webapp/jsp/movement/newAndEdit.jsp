@@ -7,6 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title><spring:message code="movement.edit.title" /></title>
+<script type="text/javascript" src="/sicomoro/js/controller/movement.js"></script>
 </head>
 <body>
 	<form:form action="save.html" commandName="movementForm">
@@ -27,6 +28,7 @@
 		<form:select path="movementType">
 			<form:options items="${movementTypes}" />
 		</form:select>
+		<form:select cssClass="hide" path="movement.idContributor"></form:select>
 	</form:form>
 </body>
 </html>

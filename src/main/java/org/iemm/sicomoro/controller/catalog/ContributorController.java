@@ -1,7 +1,11 @@
 package org.iemm.sicomoro.controller.catalog;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
+import org.iemm.sicomoro.controller.ComboView;
 import org.iemm.sicomoro.controller.jmesa.ImageCellEditor;
 import org.iemm.sicomoro.db.dao.Contributor;
 import org.iemm.sicomoro.service.ContributorService;
@@ -19,6 +23,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -70,6 +75,22 @@ public class ContributorController {
 		model.addObject("table", tableModel.render());
 		model.setViewName("/jsp/catalog/contributor/all.jsp");
 		return model;
+	}
+	
+	@RequestMapping("/getList")
+	public @ResponseBody List<ComboView> getList() {
+		LOG.trace("getList");
+		final List<ComboView> result = new ArrayList<ComboView>();
+		final List<Contributor> all = contributorService.getAll();
+
+		for (Contributor contributor : all) {
+			final ComboView view = new ComboView();
+			view.setValue(contributor.getIdContributor().toString());
+			view.setText(String.format("%s %s %s", contributor.getName(),
+					contributor.getLastName(), contributor.getSecondLastName()));
+			result.add(view);
+		}
+		return result;
 	}
 
 	@RequestMapping("/new")

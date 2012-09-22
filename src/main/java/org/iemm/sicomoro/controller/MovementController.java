@@ -1,6 +1,5 @@
 package org.iemm.sicomoro.controller;
 
-import org.iemm.sicomoro.db.dao.Movement;
 import org.iemm.sicomoro.exception.BussinesLogicException;
 import org.iemm.sicomoro.service.MovementService;
 import org.iemm.sicomoro.service.MovementService.MovementTypeE;

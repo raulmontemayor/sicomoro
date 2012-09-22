@@ -13,8 +13,9 @@
 	}
 	
 	function delId(idContributor) {
-		if(confirm('Borrar registro?'))
+		if(confirm('<spring:message code="contributor.delete.confirm" />')) {
 			window.location.href = "/sicomoro/catalog/contributor/" + idContributor + "/delete.html";
+		}
 	}
 </script>
 </head>

@@ -12,23 +12,37 @@
 <body>
 	<form:form action="save.html" commandName="movementForm">
 		<form:hidden path="movement.idMovement" />
-		<div class="span-16">
+		<div class="span-12">
 			<form:label path="movement.amount">
 				<spring:message code="movement.form.amount" />
 			</form:label>
 		</div>
-		<div class="span-16">
-			<form:input path="movement.amount" />
+		<div class="span-12 last">
+			<form:label path="movementType">
+				<spring:message code="movement.form.type" />
+			</form:label>
 		</div>
-		<div class="span-16">
+		<div class="span-12">
+			<form:input cssClass="decimal" path="movement.amount" />
+		</div>
+		<div class="span-12 last">
+			<form:select path="movementType">
+				<form:options items="${movementTypes}" />
+			</form:select>
+		</div>
+		<div class="span-12 append-12 last">
+			<form:label cssClass="contributor hide" path="movementType">
+				<spring:message code="movement.form.contributor" />
+			</form:label>
+		</div>
+		<div class="span-12 append-12 last">
+			<form:select cssClass="contributor hide" path="movement.idContributor"></form:select>
+		</div>
+		<div class="span-16 last">
 			<form:button>
 				<spring:message code="form.save" />
 			</form:button>
 		</div>
-		<form:select path="movementType">
-			<form:options items="${movementTypes}" />
-		</form:select>
-		<form:select cssClass="hide" path="movement.idContributor"></form:select>
 	</form:form>
 </body>
 </html>

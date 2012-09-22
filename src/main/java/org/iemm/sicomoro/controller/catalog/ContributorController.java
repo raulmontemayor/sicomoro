@@ -51,9 +51,11 @@ public class ContributorController {
 		htmlTable.setRow(htmlRow);
 
 		final HtmlColumn firstName = new HtmlColumn("name");
+		firstName.setTitle(resource.getMessage("contributor.form.name", null, LocaleContextHolder.getLocale()));
 		htmlRow.addColumn(firstName);
 
 		final HtmlColumn lastName = new HtmlColumn("lastName");
+		lastName.setTitle(resource.getMessage("contributor.form.lastName", null, LocaleContextHolder.getLocale()));
 		htmlRow.addColumn(lastName);
 		
 		final HtmlColumn secondLastName = new HtmlColumn("secondLastName");
@@ -66,7 +68,7 @@ public class ContributorController {
 		htmlRow.addColumn(edit);
 		
 		final HtmlColumn delete = new HtmlColumn("idContributor");
-		delete.setTitle("Delete?");
+		delete.setTitle(resource.getMessage("form.delete", null, LocaleContextHolder.getLocale()));
 		delete.setCellEditor(new ImageCellEditor("/sicomoro/resources/edit-delete.png", "delId"));
 		htmlRow.addColumn(delete);
 

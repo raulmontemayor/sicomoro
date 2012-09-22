@@ -11,25 +11,25 @@
 <body>
 		<form:form action="save.html" commandName="contributor">
 			<form:hidden path="idContributor" />
-			<div class="span-16">
+			<div class="span-12 append-12 last">
 				<form:label path="name"><spring:message code="contributor.form.name" /></form:label>
 			</div>
-			<div class="span-16">
+			<div class="span-12 append-12 last">
 				<form:input path="name" />
 			</div>
-			<div class="span-16">
+			<div class="span-12 append-12 last">
 				<form:label path="lastName"><spring:message code="contributor.form.lastName" /></form:label>
 			</div>
-			<div class="span-16">
+			<div class="span-12 append-12 last">
 				<form:input path="lastName" />
 			</div>
-			<div class="span-16">
+			<div class="span-12 append-12 last">
 				<form:label path="secondLastName"><spring:message code="contributor.form.secondLastName" /></form:label>
 			</div>
-			<div class="span-16">
+			<div class="span-12 append-12 last">
 				<form:input path="secondLastName" />
 			</div>
-			<div class="span-16">
+			<div class="span-12 append-12 last">
 				<form:button><spring:message code="form.save" /></form:button>
 			</div>
 		</form:form>

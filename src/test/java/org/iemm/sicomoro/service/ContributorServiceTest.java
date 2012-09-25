@@ -55,8 +55,8 @@ public class ContributorServiceTest {
 	}
 
 	@Test
-	public void testFind() {
-		LOG.trace("testFind");
+	public void testGetAll() {
+		LOG.trace("testGetAll");
 		final List<Contributor> expected = new ArrayList<Contributor>();
 		when(contributorMapper.selectByExample(null)).thenReturn(expected);
 		final List<Contributor> result = instance.getAll();
@@ -75,5 +75,22 @@ public class ContributorServiceTest {
 		LOG.trace("testSetContributorMapper");
 		assertEquals(instance.getContributorMapper(), contributorMapper);
 	}
-
+	
+	@Test
+	public void testFind() {
+		LOG.trace("testFind");
+		final Integer idContributor = Integer.valueOf(554);
+		final Contributor expected = new Contributor();
+		when(contributorMapper.selectByPrimaryKey(idContributor)).thenReturn(expected);
+		assertEquals(expected, instance.find(idContributor));
+	}
+	
+	@Test
+	public void testDelete() {
+		LOG.trace("testDelete");
+		final Integer idContributor = Integer.valueOf(554);
+		final int expected = 44;
+		when(contributorMapper.deleteByPrimaryKey(idContributor)).thenReturn(expected);
+		assertEquals(expected, instance.delete(idContributor));
+	}
 }

@@ -26,9 +26,6 @@ public class MovementService {
 	@Autowired
 	private MovementTypeMapper movementTypeMapper;
 
-	@Autowired
-	private CatalogService catalogService;
-
 	public enum MovementTypeE {
 		UP("Alta"), DOWN("Baja"), TITHE("Diezmo")  ;
 		MovementTypeE(String name) {
@@ -46,11 +43,6 @@ public class MovementService {
 	 */
 	public int createMovement( BigDecimal amount, Integer idContributor, MovementTypeE movementType) throws BussinesLogicException {
 		final Movement movement = new Movement();
-		final Date actual = new Date();
-		movement.setCreateDate(actual);
-		movement.setUpdateDate(actual);
-		movement.setIdMovementType(getMovementTypeId(movementType));
-		movement.setAmount(amount);
 		
 		// Si es diezmo validar que idContributor no sea null
 		if(MovementTypeE.TITHE.equals(movementType)) {
@@ -60,6 +52,12 @@ public class MovementService {
 				movement.setIdContributor(idContributor);
 			}
 		}
+		
+		final Date actual = new Date();
+		movement.setCreateDate(actual);
+		movement.setUpdateDate(actual);
+		movement.setIdMovementType(getMovementTypeId(movementType));
+		movement.setAmount(amount);
 		return movementMapper.insert(movement);
 	}
 

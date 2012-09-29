@@ -10,7 +10,7 @@
 <script type="text/javascript" src="/sicomoro/js/controller/movement.js"></script>
 </head>
 <body>
-	<form:form action="save.html" commandName="movementForm">
+	<form:form acceptCharset="UTF-8" action="save.html" commandName="movementForm">
 		<form:hidden path="movement.idMovement" />
 		<div class="span-12">
 			<form:label path="movement.amount">
@@ -30,19 +30,39 @@
 				<form:options items="${movementTypes}" />
 			</form:select>
 		</div>
-		<div class="span-12 append-12 last">
-			<form:label cssClass="contributor hide" path="movementType">
+		<!-- Segunda Línea -->
+		<div class="span-12">
+			<form:label path="movement.movementDate">
+				<spring:message code="movement.form.date" />
+			</form:label>
+		</div>
+		<div class="span-12 last">
+			<form:label cssClass="contributor hide" path="movement.idContributor">
 				<spring:message code="movement.form.contributor" />
 			</form:label>
 		</div>
-		<div class="span-12 append-12 last">
+		<div class="span-12">
+			<form:input class="date" path="movement.movementDate" />
+		</div>
+		<div class="span-12 last">
 			<form:select cssClass="contributor hide" path="movement.idContributor"></form:select>
 		</div>
-		<div class="span-16 last">
+		<!-- Tercera linea -->
+		<div class="span-12 append-12 last">
+			<form:label path="movement.description">
+				<spring:message code="form.description" />
+			</form:label>
+		</div>
+		<div class="span-24 last">
+			<form:textarea path="movement.description"></form:textarea>
+		</div>
+
+		<div class="span-16 append-8 last">
 			<form:button>
 				<spring:message code="form.save" />
 			</form:button>
 		</div>
+
 	</form:form>
 </body>
 </html>

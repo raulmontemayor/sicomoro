@@ -41,7 +41,7 @@ public class MovementService {
 	 * @return
 	 * @throws BussinesLogicException 
 	 */
-	public int createMovement( BigDecimal amount, Integer idContributor, MovementTypeE movementType) throws BussinesLogicException {
+	public int createMovement( BigDecimal amount, Integer idContributor, Date movementDate, String description, MovementTypeE movementType) throws BussinesLogicException {
 		final Movement movement = new Movement();
 		
 		// Si es diezmo validar que idContributor no sea null
@@ -58,6 +58,8 @@ public class MovementService {
 		movement.setUpdateDate(actual);
 		movement.setIdMovementType(getMovementTypeId(movementType));
 		movement.setAmount(amount);
+		movement.setMovementDate(movementDate);
+		movement.setDescription(description);
 		return movementMapper.insert(movement);
 	}
 

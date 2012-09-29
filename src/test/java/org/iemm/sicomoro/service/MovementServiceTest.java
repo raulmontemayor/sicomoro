@@ -8,6 +8,7 @@ import static org.mockito.Mockito.when;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.iemm.sicomoro.db.client.MovementCutMapper;
@@ -72,12 +73,13 @@ public class MovementServiceTest {
 		final BigDecimal amount = BigDecimal.valueOf(45.50);
 		final Integer idContributor = null;
 		final MovementTypeE movementType = MovementTypeE.UP;
+		final Date movementDate = new Date();
 		
 		final List<MovementType> lstMovementTypes = new ArrayList<MovementType>();
 		lstMovementTypes.add(new MovementType());
 		when(movementTypeMapper.selectByExample(any(MovementTypeExample.class))).thenReturn(lstMovementTypes);
 		when(movementMapper.insert(any(Movement.class))).thenReturn(50);
-		int result = instance.createMovement(amount, idContributor, movementType);
+		int result = instance.createMovement(amount, idContributor, movementDate, null, movementType);
 		assertEquals(50, result);
 	}
 	
@@ -88,12 +90,13 @@ public class MovementServiceTest {
 		final BigDecimal amount = BigDecimal.valueOf(45.50);
 		final Integer idContributor = Integer.valueOf(90);
 		final MovementTypeE movementType = MovementTypeE.TITHE;
+		final Date movementDate = new Date();
 		
 		final List<MovementType> lstMovementTypes = new ArrayList<MovementType>();
 		lstMovementTypes.add(new MovementType());
 		when(movementTypeMapper.selectByExample(any(MovementTypeExample.class))).thenReturn(lstMovementTypes);
 		when(movementMapper.insert(any(Movement.class))).thenReturn(50);
-		int result = instance.createMovement(amount, idContributor, movementType);
+		int result = instance.createMovement(amount, idContributor, movementDate, null, movementType);
 		assertEquals(50, result);
 	}
 	
@@ -103,7 +106,8 @@ public class MovementServiceTest {
 		final BigDecimal amount = BigDecimal.valueOf(45.50);
 		final Integer idContributor = null;
 		final MovementTypeE movementType = MovementTypeE.TITHE;
-		instance.createMovement(amount, idContributor, movementType);
+		final Date movementDate = new Date();
+		instance.createMovement(amount, idContributor, movementDate, null, movementType);
 		fail("BussinesLogicException expected");
 	}
 	

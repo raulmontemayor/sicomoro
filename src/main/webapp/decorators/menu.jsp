@@ -57,6 +57,7 @@ body.loading .loadingDiv {
 	});
 	$(function(){
 		$(".decimal").numeric({ precision: 2 });
+		$(".date").datepicker();
 	});
 </script>
 <decorator:head />

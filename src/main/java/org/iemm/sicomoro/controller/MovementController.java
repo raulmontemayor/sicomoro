@@ -38,7 +38,7 @@ public class MovementController {
 		int idMovement;
 		try {
 			idMovement = movementService.createMovement(form.getMovement().getAmount(), form.getMovement().getIdContributor(),
-					movementType);
+					form.getMovement().getMovementDate(), form.getMovement().getDescription(), movementType);
 		} catch (BussinesLogicException e) {
 			return "";
 		}

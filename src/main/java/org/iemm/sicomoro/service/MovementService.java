@@ -58,6 +58,7 @@ public class MovementService {
 		movement.setUpdateDate(actual);
 		movement.setIdMovementType(getMovementTypeId(movementType));
 		movement.setAmount(amount);
+		// TODO validar que no existan cortes de movimientos despues de esta fecha
 		movement.setMovementDate(movementDate);
 		movement.setDescription(description);
 		return movementMapper.insert(movement);

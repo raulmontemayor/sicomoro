@@ -12,7 +12,6 @@ import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.lang.time.DateUtils;
-import org.iemm.sicomoro.db.client.MovementCutMapper;
 import org.iemm.sicomoro.db.client.MovementMapper;
 import org.iemm.sicomoro.db.client.MovementTypeMapper;
 import org.iemm.sicomoro.db.dao.Movement;

@@ -7,7 +7,8 @@ import org.iemm.sicomoro.db.client.MovementCutMapper;
 import org.iemm.sicomoro.db.dao.MovementCut;
 import org.iemm.sicomoro.db.dao.MovementCutExample;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.stereotype.Service;
+@Service
 public class MovementCutService {
 	
 	@Autowired

@@ -4,10 +4,10 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
-import org.iemm.sicomoro.db.client.MovementCutMapper;
 import org.iemm.sicomoro.db.client.MovementMapper;
 import org.iemm.sicomoro.db.client.MovementTypeMapper;
 import org.iemm.sicomoro.db.dao.Movement;
+import org.iemm.sicomoro.db.dao.MovementCut;
 import org.iemm.sicomoro.db.dao.MovementType;
 import org.iemm.sicomoro.db.dao.MovementTypeExample;
 import org.iemm.sicomoro.exception.BussinesLogicException;
@@ -21,10 +21,10 @@ public class MovementService {
 	private MovementMapper movementMapper;
 
 	@Autowired
-	private MovementCutMapper movementCutMapper;
-
-	@Autowired
 	private MovementTypeMapper movementTypeMapper;
+	
+	@Autowired
+	private MovementCutService movementCutService;
 
 	public enum MovementTypeE {
 		UP("Alta"), DOWN("Baja"), TITHE("Diezmo")  ;
@@ -52,15 +52,19 @@ public class MovementService {
 				movement.setIdContributor(idContributor);
 			}
 		}
-		
+		final MovementCut lastMovementCut = movementCutService.getLastMovementCut();
+		if (lastMovementCut != null) {
+			if (lastMovementCut.getCutDate().after(movementDate)) {
+				throw new BussinesLogicException("movement.error.date");
+			}
+		}
+		movement.setMovementDate(movementDate);
+		movement.setIdMovementType(getMovementTypeId(movementType));
+		movement.setAmount(amount);
+		movement.setDescription(description);
 		final Date actual = new Date();
 		movement.setCreateDate(actual);
 		movement.setUpdateDate(actual);
-		movement.setIdMovementType(getMovementTypeId(movementType));
-		movement.setAmount(amount);
-		// TODO validar que no existan cortes de movimientos despues de esta fecha
-		movement.setMovementDate(movementDate);
-		movement.setDescription(description);
 		return movementMapper.insert(movement);
 	}
 
@@ -96,21 +100,6 @@ public class MovementService {
 	}
 
 	/**
-	 * @return the movementCutMapper
-	 */
-	public MovementCutMapper getMovementCutMapper() {
-		return movementCutMapper;
-	}
-
-	/**
-	 * @param movementCutMapper
-	 *            the movementCutMapper to set
-	 */
-	public void setMovementCutMapper(MovementCutMapper movementCutMapper) {
-		this.movementCutMapper = movementCutMapper;
-	}
-
-	/**
 	 * @return the movementTypeMapper
 	 */
 	public MovementTypeMapper getMovementTypeMapper() {
@@ -124,4 +113,19 @@ public class MovementService {
 	public void setMovementTypeMapper(MovementTypeMapper movementTypeMapper) {
 		this.movementTypeMapper = movementTypeMapper;
 	}
+
+	/**
+	 * @return the movementCutService
+	 */
+	public MovementCutService getMovementCutService() {
+		return movementCutService;
+	}
+
+	/**
+	 * @param movementCutService the movementCutService to set
+	 */
+	public void setMovementCutService(MovementCutService movementCutService) {
+		this.movementCutService = movementCutService;
+	}
+
 }

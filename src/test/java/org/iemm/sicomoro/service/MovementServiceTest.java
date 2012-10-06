@@ -11,10 +11,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.lang.time.DateUtils;
 import org.iemm.sicomoro.db.client.MovementCutMapper;
 import org.iemm.sicomoro.db.client.MovementMapper;
 import org.iemm.sicomoro.db.client.MovementTypeMapper;
 import org.iemm.sicomoro.db.dao.Movement;
+import org.iemm.sicomoro.db.dao.MovementCut;
 import org.iemm.sicomoro.db.dao.MovementType;
 import org.iemm.sicomoro.db.dao.MovementTypeExample;
 import org.iemm.sicomoro.exception.BussinesLogicException;
@@ -34,16 +36,16 @@ public class MovementServiceTest {
 	
 	/* Campos de la instancia a probar */
 	private MovementMapper movementMapper;
-	private MovementCutMapper movementCutMapper;
 	private MovementTypeMapper movementTypeMapper;
+	private MovementCutService movementCutService;
 
 	@Before
 	public void setUp() throws Exception {
 		instance = new MovementService();
 		movementMapper = mock(MovementMapper.class);
 		instance.setMovementMapper(movementMapper);
-		movementCutMapper = mock(MovementCutMapper.class);
-		instance.setMovementCutMapper(movementCutMapper);
+		movementCutService = mock(MovementCutService.class);
+		instance.setMovementCutService(movementCutService);
 		movementTypeMapper = mock(MovementTypeMapper.class);
 		instance.setMovementTypeMapper(movementTypeMapper);
 	}
@@ -55,9 +57,9 @@ public class MovementServiceTest {
 	}
 	
 	@Test
-	public void testGetMovementCutMapper() {
-		LOG.trace("testGetMovementCutMapper");
-		assertEquals(movementCutMapper, instance.getMovementCutMapper());
+	public void testGetMovementCutService() {
+		LOG.trace("testGetMovementCutService");
+		assertEquals(movementCutService, instance.getMovementCutService());
 	}
 	
 	@Test
@@ -81,6 +83,28 @@ public class MovementServiceTest {
 		when(movementMapper.insert(any(Movement.class))).thenReturn(50);
 		int result = instance.createMovement(amount, idContributor, movementDate, null, movementType);
 		assertEquals(50, result);
+	}
+	
+	@Test(expected = BussinesLogicException.class)
+	public void testCreateMovementWhitCutDateBefore() throws BussinesLogicException {
+		LOG.trace("testCreateMovement");
+		
+		final BigDecimal amount = BigDecimal.valueOf(45.50);
+		final Integer idContributor = null;
+		final MovementTypeE movementType = MovementTypeE.UP;
+		final Date movementDate = new Date();
+		
+		final List<MovementType> lstMovementTypes = new ArrayList<MovementType>();
+		lstMovementTypes.add(new MovementType());
+		when(movementTypeMapper.selectByExample(any(MovementTypeExample.class))).thenReturn(lstMovementTypes);
+		when(movementMapper.insert(any(Movement.class))).thenReturn(50);
+		final MovementCut lastMovement = new MovementCut();
+		lastMovement.setCutDate(DateUtils.addDays(movementDate, 1));
+		when(movementCutService.getLastMovementCut()).thenReturn(lastMovement);
+		
+		instance.createMovement(amount, idContributor, movementDate, null, movementType);
+		fail("Debio haber mandado una exepcion de logica de negocios porque" +
+				" la fecha del ultimo corte es mayor a la fecha del movimiento");
 	}
 	
 	@Test

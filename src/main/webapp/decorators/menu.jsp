@@ -65,8 +65,9 @@ body.loading .loadingDiv {
 <body>
 	<div class="container">
 		<div class="span-24 large last">
-			<a href="/sicomoro/catalog/contributor/all.html"><spring:message code="menu.catalog.contributor" /></a>
+			<a href="/sicomoro/upload.html">Upload</a>
 			<a href="/sicomoro/movement/new.html"><spring:message code="menu.movement.title" /></a>
+			<a href="/sicomoro/movementcut/new.html"><spring:message code="movementcut.edit.title" /></a>
 			<a href="/sicomoro/logout.html"><spring:message code="menu.logout" /></a>
 		</div>
 		<div class="span-24 last"><decorator:title /></div>

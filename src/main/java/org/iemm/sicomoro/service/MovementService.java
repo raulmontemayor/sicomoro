@@ -8,6 +8,7 @@ import org.iemm.sicomoro.db.client.MovementMapper;
 import org.iemm.sicomoro.db.client.MovementTypeMapper;
 import org.iemm.sicomoro.db.dao.Movement;
 import org.iemm.sicomoro.db.dao.MovementCut;
+import org.iemm.sicomoro.db.dao.MovementExample;
 import org.iemm.sicomoro.db.dao.MovementType;
 import org.iemm.sicomoro.db.dao.MovementTypeExample;
 import org.iemm.sicomoro.exception.BussinesLogicException;
@@ -78,6 +79,19 @@ public class MovementService {
 		example.createCriteria().andNameEqualTo(movementType.name);
 		List<MovementType> lstMovementType = movementTypeMapper.selectByExample(example);
 		return lstMovementType.get(0).getIdMovementType();
+	}
+	
+	public List<Movement> getMovementsWithoutCut() {
+		final MovementExample example = new MovementExample();
+		example.createCriteria().andIdMovementCutIsNull();
+		example.setOrderByClause("movementDate");
+		return movementMapper.selectByExample(example);
+
+	}
+	
+	public void update(Movement movement) {
+		movement.setUpdateDate(new Date());
+		movementMapper.updateByPrimaryKey(movement);
 	}
 	
 	public Movement find(Integer idMovement){

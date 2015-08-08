@@ -25,7 +25,7 @@ public class MovementController {
 	
 	@RequestMapping("/new")
 	public String newObject(Model model){
-		LOG.trace("new");
+		LOG.trace(">> new()");
 		model.addAttribute("movementForm", new MovementForm());
 		model.addAttribute("movementTypes", MovementTypeE.values());
 		return "/jsp/movement/newAndEdit.jsp";
@@ -35,6 +35,7 @@ public class MovementController {
 	public String save(
 			@ModelAttribute(value = "movementForm") MovementForm form,
 			@RequestParam MovementTypeE movementType) {
+		LOG.trace(">> save()");
 		int idMovement;
 		try {
 			idMovement = movementService.createMovement(form.getMovement().getAmount(), form.getMovement().getIdContributor(),

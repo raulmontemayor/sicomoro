@@ -39,7 +39,10 @@
 			<ref bean="localeChangeInterceptor" />
 		</property>
 	</bean>
-	
+
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+
 	<!-- Base de datos -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">

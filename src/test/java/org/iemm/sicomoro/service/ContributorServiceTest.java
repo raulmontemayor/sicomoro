@@ -6,12 +6,14 @@ import static org.junit.Assert.assertNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.any;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.iemm.sicomoro.db.client.ContributorMapper;
 import org.iemm.sicomoro.db.dao.Contributor;
+import org.iemm.sicomoro.db.dao.ContributorExample;
 import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -58,9 +60,9 @@ public class ContributorServiceTest {
 	public void testGetAll() {
 		LOG.trace("testGetAll");
 		final List<Contributor> expected = new ArrayList<Contributor>();
-		when(contributorMapper.selectByExample(null)).thenReturn(expected);
+		when(contributorMapper.selectByExample(any(ContributorExample.class))).thenReturn(expected);
 		final List<Contributor> result = instance.getAll();
-		verify(contributorMapper).selectByExample(null);
+		verify(contributorMapper).selectByExample(any(ContributorExample.class));
 		assertEquals(expected, result);
 	}
 	

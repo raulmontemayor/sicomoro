@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.commons.lang.Validate;
 import org.iemm.sicomoro.db.client.ContributorMapper;
 import org.iemm.sicomoro.db.dao.Contributor;
+import org.iemm.sicomoro.db.dao.ContributorExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -58,7 +59,9 @@ public class ContributorService {
 	 * @return
 	 */
 	public List<Contributor> getAll() {
-		return contributorMapper.selectByExample(null);
+		final ContributorExample example = new ContributorExample();
+		example.setOrderByClause("name");
+		return contributorMapper.selectByExample(example);
 	}
 
 	/**

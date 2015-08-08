@@ -41,7 +41,7 @@ public class ContributorController {
 	
 	@RequestMapping("/all")
 	public ModelAndView all(HttpServletRequest request, ModelAndView model) {
-		LOG.trace("ContributorController.all");
+		LOG.trace(">> all()");
 		final TableModel tableModel = new TableModel("contributorTable", request);
 		tableModel.setItems(contributorService.getAll());
 
@@ -81,7 +81,7 @@ public class ContributorController {
 	
 	@RequestMapping("/getList")
 	public @ResponseBody List<ComboView> getList() {
-		LOG.trace("getList");
+		LOG.trace(">> getList()");
 		final List<ComboView> result = new ArrayList<ComboView>();
 		final List<Contributor> all = contributorService.getAll();
 
@@ -97,14 +97,14 @@ public class ContributorController {
 
 	@RequestMapping("/new")
 	public String newObject(Model model) {
-		LOG.trace("ContributorController.new");
+		LOG.trace(">> new()");
 		model.addAttribute("contributor", new Contributor());
 		return "/jsp/catalog/contributor/newAndEdit.jsp";
 	}
 
 	@RequestMapping("/{idContributor}/edit")
 	public String editObject(@PathVariable Integer idContributor, Model model) {
-		LOG.trace("ContributorController.edit");
+		LOG.trace(">> edit()");
 		model.addAttribute("contributor",
 				contributorService.find(idContributor));
 		return "/jsp/catalog/contributor/newAndEdit.jsp";
@@ -112,7 +112,7 @@ public class ContributorController {
 	
 	@RequestMapping("/{idContributor}/delete")
 	public String deleteObject(@PathVariable Integer idContributor, Model model) {
-		LOG.trace("ContributorController.delete");
+		LOG.trace(">> delete()");
 		model.addAttribute("contributor",
 				contributorService.delete(idContributor));
 		return "redirect:/catalog/contributor/all.html";
@@ -121,7 +121,7 @@ public class ContributorController {
 	@RequestMapping(value = { "/save", "/**/save" })
 	public String saveObject(@ModelAttribute Contributor contributor,
 			Model model) {
-		LOG.trace("ContributorController.save");
+		LOG.trace(">> save()");
 		contributorService.save(contributor);
 		return "redirect:/catalog/contributor/all.html";
 	}

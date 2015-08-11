@@ -1,0 +1,580 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="factura" language="groovy" pageWidth="612" pageHeight="792" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="458a93b2-9c7c-49c4-956a-5bd2dadba4d0">
+	<property name="ireport.zoom" value="1.7715610000000015"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="totalMaintenance" class="java.math.BigDecimal" isForPrompting="false">
+		<defaultValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></defaultValueExpression>
+	</parameter>
+	<parameter name="totalConservation" class="java.math.BigDecimal" isForPrompting="false">
+		<defaultValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></defaultValueExpression>
+	</parameter>
+	<parameter name="total" class="java.math.BigDecimal" isForPrompting="false">
+		<defaultValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></defaultValueExpression>
+	</parameter>
+	<parameter name="date" class="java.util.Date" isForPrompting="false">
+		<defaultValueExpression><![CDATA[new java.util.Date()]]></defaultValueExpression>
+	</parameter>
+	<parameter name="totalWater" class="java.math.BigDecimal" isForPrompting="false">
+		<defaultValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></defaultValueExpression>
+	</parameter>
+	<parameter name="totalLight" class="java.math.BigDecimal" isForPrompting="false">
+		<defaultValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></defaultValueExpression>
+	</parameter>
+	<parameter name="totalPaper" class="java.math.BigDecimal" isForPrompting="false">
+		<defaultValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></defaultValueExpression>
+	</parameter>
+	<parameter name="totalTransport" class="java.math.BigDecimal" isForPrompting="false">
+		<defaultValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></defaultValueExpression>
+	</parameter>
+	<parameter name="totalFood" class="java.math.BigDecimal" isForPrompting="false">
+		<defaultValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></defaultValueExpression>
+	</parameter>
+	<parameter name="totalOther" class="java.math.BigDecimal" isForPrompting="false">
+		<defaultValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></defaultValueExpression>
+	</parameter>
+	<parameter name="1MondayTithe" class="java.math.BigDecimal" isForPrompting="false">
+		<defaultValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></defaultValueExpression>
+	</parameter>
+	<parameter name="4MondayTithe" class="java.math.BigDecimal" isForPrompting="false">
+		<defaultValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></defaultValueExpression>
+	</parameter>
+	<parameter name="3MondayTithe" class="java.math.BigDecimal" isForPrompting="false">
+		<defaultValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></defaultValueExpression>
+	</parameter>
+	<parameter name="2MondayTithe" class="java.math.BigDecimal" isForPrompting="false">
+		<defaultValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></defaultValueExpression>
+	</parameter>
+	<parameter name="5MondayTithe" class="java.math.BigDecimal" isForPrompting="false">
+		<defaultValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></defaultValueExpression>
+	</parameter>
+	<parameter name="totalTithe" class="java.math.BigDecimal" isForPrompting="false">
+		<defaultValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></defaultValueExpression>
+	</parameter>
+	<parameter name="1MondayOffering" class="java.math.BigDecimal" isForPrompting="false">
+		<defaultValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></defaultValueExpression>
+	</parameter>
+	<parameter name="2MondayOffering" class="java.math.BigDecimal" isForPrompting="false">
+		<defaultValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></defaultValueExpression>
+	</parameter>
+	<parameter name="3MondayOffering" class="java.math.BigDecimal" isForPrompting="false">
+		<defaultValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></defaultValueExpression>
+	</parameter>
+	<parameter name="4MondayOffering" class="java.math.BigDecimal" isForPrompting="false">
+		<defaultValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></defaultValueExpression>
+	</parameter>
+	<parameter name="5MondayOffering" class="java.math.BigDecimal" isForPrompting="false">
+		<defaultValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></defaultValueExpression>
+	</parameter>
+	<parameter name="totalOffering" class="java.math.BigDecimal" isForPrompting="false">
+		<defaultValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></defaultValueExpression>
+	</parameter>
+	<parameter name="totalIncome" class="java.math.BigDecimal" isForPrompting="false">
+		<defaultValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></defaultValueExpression>
+	</parameter>
+	<parameter name="totalExpense" class="java.math.BigDecimal" isForPrompting="false">
+		<defaultValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></defaultValueExpression>
+	</parameter>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="65" splitType="Stretch">
+			<staticText>
+				<reportElement x="1" y="0" width="571" height="25" uuid="05e9a386-232a-4e72-a1bd-3f95aaa56554"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[IGLESIA EVANGÉLICA MISIONERA MEXICANA, A. R.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="218" y="25" width="135" height="20" forecolor="#FF0000" uuid="658d3eac-2c14-454c-b54c-e20856e7b856"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SGAR/350/93]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="197" y="45" width="176" height="20" forecolor="#FF0000" uuid="466c5822-7ae6-4653-bb53-dff0df789f79"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[R.F.C: IEM9406238V1]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="50" splitType="Stretch">
+			<textField pattern="MMMMM">
+				<reportElement x="241" y="25" width="125" height="20" uuid="16545a3d-3179-4483-a5e9-332e614ae10d"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" markup="none">
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{date}]]></textFieldExpression>
+			</textField>
+			<textField pattern="yyyy">
+				<reportElement x="458" y="25" width="85" height="20" uuid="43306d27-e70a-48e7-9a19-ac768d044865"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" markup="none">
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{date}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="571" height="25" uuid="98fd0d21-6301-4d40-93b9-59b72b5dd02d"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DECLARACIÓN DE INGRESOS Y EGRESOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="25" width="241" height="25" uuid="6e13ace5-86fe-43e3-94e9-5e01e17a9d13"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CORRESPONDIENTE AL MES:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="385" y="25" width="73" height="25" uuid="30135267-f8d8-435d-8143-d8c7e42738d0"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[AÑO:]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="637" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="7" width="572" height="1" uuid="0efb2df2-d04e-46b4-b7c6-1226ee42f7bf"/>
+			</line>
+			<textField pattern="¤ #,##0.00">
+				<reportElement mode="Transparent" x="134" y="71" width="107" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="01ea560e-2e4b-4732-afb7-69b2b3876cee"/>
+				<box rightPadding="5">
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{1MondayTithe}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="21" width="240" height="25" uuid="70c47092-ad05-4e0d-94ae-059ed8ed6001"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="16" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[INGRESOS DEL MES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="309" y="21" width="218" height="44" uuid="e6dba5cf-89fb-4f93-9cdf-a4e1289ba01c"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="16" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[EGRESOS DEL MES CON FACTURA ELECTRÓNICA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="46" width="240" height="25" uuid="fd44fbe3-4508-4158-96b1-0125994c3b68"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="16" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[DIEZMOS]]></text>
+			</staticText>
+			<line>
+				<reportElement x="245" y="8" width="1" height="629" uuid="7d7945c9-0721-46d5-b8e0-c27d393ae54e"/>
+			</line>
+			<staticText>
+				<reportElement x="1" y="71" width="133" height="20" uuid="810e25ac-c2c3-4d4d-99ab-97caf9149925"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[PRIMER DOMINGO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="101" width="133" height="20" uuid="224df8f5-3db4-4796-a0f1-9473ea8579d4"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[SEGUNDO DOMINGO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="130" width="133" height="20" uuid="b6891644-9d69-4b04-a8f8-5ae62b3ed4c3"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[TERCER DOMINGO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="159" width="133" height="20" uuid="597d14f0-dfd0-4828-8a0c-7fff86f2f2e8"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[CUARTO DOMINGO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="188" width="133" height="20" uuid="bf3d246c-a9dc-4fbd-9505-06ca4ee8dc20"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[QUINTO DOMINGO:]]></text>
+			</staticText>
+			<textField pattern="¤ #,##0.00">
+				<reportElement mode="Transparent" x="134" y="101" width="107" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="b8240554-5fa5-4fbc-b968-3edb4280d5c7"/>
+				<box rightPadding="5">
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{2MondayTithe}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement mode="Transparent" x="134" y="130" width="107" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="b6301e8f-c589-4cb5-9dd2-5f8c508b6454"/>
+				<box rightPadding="5">
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{3MondayTithe}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement mode="Transparent" x="134" y="159" width="107" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="a94975ce-cd2d-4d2e-a664-dbd3b22ec370"/>
+				<box rightPadding="5">
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{4MondayTithe}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement mode="Transparent" x="134" y="188" width="107" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="250b0604-408d-4539-86df-7868f81f97b8"/>
+				<box rightPadding="5">
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{5MondayTithe}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement mode="Transparent" x="134" y="218" width="107" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="5d93acb0-0ca7-4e8d-ba1b-0ac9777e6986"/>
+				<box rightPadding="5">
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalTithe}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="218" width="133" height="20" uuid="5c124c3d-b9e5-44c7-8bb3-bedecd5a3ab6"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[TOTAL DE DIEZMOS:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="256" width="240" height="25" uuid="22a9134e-eede-46b0-95ae-75d55ba76f69"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="16" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[OFRENDAS]]></text>
+			</staticText>
+			<textField pattern="¤ #,##0.00">
+				<reportElement mode="Transparent" x="134" y="404" width="107" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="097dadc5-ab2c-4310-b5c9-a7a79356fc03"/>
+				<box rightPadding="5">
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{5MondayOffering}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement mode="Transparent" x="134" y="346" width="107" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="f47cee57-1929-42ec-be46-9c9ab75fec06"/>
+				<box rightPadding="5">
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{3MondayOffering}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="375" width="133" height="20" uuid="e498284e-4c7f-4903-a2d3-e4e8725beacf"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[CUARTO DOMINGO:]]></text>
+			</staticText>
+			<textField pattern="¤ #,##0.00">
+				<reportElement mode="Transparent" x="134" y="375" width="107" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="f348b8d5-613d-40ef-84ba-5f4ac8a7220f"/>
+				<box rightPadding="5">
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{4MondayOffering}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="317" width="133" height="20" uuid="45590fb3-2fba-4cf7-bf0f-1d70c7a533d5"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[SEGUNDO DOMINGO:]]></text>
+			</staticText>
+			<textField pattern="¤ #,##0.00">
+				<reportElement mode="Transparent" x="134" y="317" width="107" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="1e42a870-61e8-4c50-a1aa-44f81b9e2b72"/>
+				<box rightPadding="5">
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{2MondayOffering}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement mode="Transparent" x="134" y="287" width="107" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="e4e93794-d5e8-404f-b024-2133b26d3c8f"/>
+				<box rightPadding="5">
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{1MondayOffering}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="346" width="133" height="20" uuid="13b5e660-3453-45cb-923d-cebfa57cc7f2"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[TERCER DOMINGO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="434" width="133" height="20" uuid="71a6759c-7a27-4c15-bd44-2a81d05c44eb"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[TOTAL DE OFRENDAS:]]></text>
+			</staticText>
+			<textField pattern="¤ #,##0.00">
+				<reportElement mode="Transparent" x="134" y="434" width="107" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="31eec50d-b886-4cb1-a619-79ecb54b7d47"/>
+				<box rightPadding="5">
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalOffering}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="287" width="133" height="20" uuid="4a516bb5-2356-4ffe-a0a2-d87f4d823bbe"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[PRIMER DOMINGO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="404" width="133" height="20" uuid="3f29bcf1-54a6-4c8a-8598-a820f6d50091"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[QUINTO DOMINGO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="465" width="133" height="20" uuid="dc1e6d11-af32-4904-b4e8-4bf305a19f08"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[TOTAL DE INGRESOS:]]></text>
+			</staticText>
+			<textField pattern="¤ #,##0.00">
+				<reportElement mode="Transparent" x="134" y="465" width="107" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="bf0c8e8d-96f8-48e9-a953-07b46cf3d569"/>
+				<box rightPadding="5">
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalIncome}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement mode="Transparent" x="461" y="71" width="107" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="0dd87402-52cc-4fc1-9e94-03cdb008b88d"/>
+				<box rightPadding="5">
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalMaintenance}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="277" y="71" width="181" height="20" uuid="b5d1dc23-63c7-4617-ad9e-069f01809cbe"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[AYUDA DE MANUTENCIÓN:]]></text>
+			</staticText>
+			<textField pattern="¤ #,##0.00">
+				<reportElement mode="Transparent" x="461" y="101" width="107" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="fbd76dfb-fee7-4239-8112-5244d30f93fa"/>
+				<box rightPadding="5">
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalConservation}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="277" y="101" width="181" height="20" uuid="3cc432d2-267b-405e-8cd3-c33b6921491b"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[MANTENIMIENTO DEL TEMPLO:]]></text>
+			</staticText>
+			<textField pattern="¤ #,##0.00">
+				<reportElement mode="Transparent" x="461" y="130" width="107" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="3cf67d4f-8668-4887-89d7-269c04b2e964"/>
+				<box rightPadding="5">
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalWater}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="277" y="130" width="181" height="20" uuid="92370999-8fa7-4c53-8a48-46ee137c6861"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[PAGO DE AGUA POTABLE:]]></text>
+			</staticText>
+			<textField pattern="¤ #,##0.00">
+				<reportElement mode="Transparent" x="461" y="159" width="107" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="06772dbc-a3f6-4160-9c3d-7b65c5ad73ec"/>
+				<box rightPadding="5">
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalLight}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="277" y="159" width="181" height="20" uuid="fe9a2c81-db3a-4af1-a5a9-3371654ceb31"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[PAGO DE LUZ ELÉCTRICA:]]></text>
+			</staticText>
+			<textField pattern="¤ #,##0.00">
+				<reportElement mode="Transparent" x="461" y="188" width="107" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="a8a3c5d9-9073-4c03-b62c-ac25ee0042d3"/>
+				<box rightPadding="5">
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalPaper}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="277" y="188" width="181" height="20" uuid="72bf4551-9b53-41db-aa03-4ac3d039ef5c"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[COMPRA DE PAPELERÍA:]]></text>
+			</staticText>
+			<textField pattern="¤ #,##0.00">
+				<reportElement mode="Transparent" x="461" y="218" width="107" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="a69ed7ff-242b-46a7-9a01-a1f7bcea7195"/>
+				<box rightPadding="5">
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalTransport}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="277" y="218" width="184" height="20" uuid="454e1354-5b04-4d54-b283-021bfb8f8efd"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[PAGO DE PASAJES Y TRANSPORTES:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="277" y="250" width="184" height="20" uuid="d9955a37-28ee-413a-a3bb-c0d67eb99b93"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[PAGO DE COMIDAS Y ALIMENTOS:]]></text>
+			</staticText>
+			<textField pattern="¤ #,##0.00">
+				<reportElement mode="Transparent" x="461" y="250" width="107" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="ed3a225d-60a8-4871-8363-b5fda964a7be"/>
+				<box rightPadding="5">
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalFood}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="287" y="297" width="133" height="20" uuid="cbfa7fe6-f9ce-47f1-9c62-246013538df0"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[TOTAL DE EGRESOS:]]></text>
+			</staticText>
+			<textField pattern="¤ #,##0.00">
+				<reportElement mode="Transparent" x="420" y="297" width="107" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="a8330eec-30cd-425e-90fa-57a2cca5f14f"/>
+				<box rightPadding="5">
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalExpense}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="328" y="434" width="133" height="20" uuid="6777028f-2046-452e-8eb5-493b91a1b99e"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[FIRMA DEL PASTOR]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="636" width="572" height="1" uuid="1e9cbed7-02af-42ea-92ae-7836c7a6096a"/>
+			</line>
+		</band>
+	</columnHeader>
+</jasperReport>

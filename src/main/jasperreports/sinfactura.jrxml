@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="sinfactura" language="groovy" pageWidth="612" pageHeight="792" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenResourceMissingType="Empty" uuid="458a93b2-9c7c-49c4-956a-5bd2dadba4d0">
+	<property name="ireport.zoom" value="1.331000000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="totalMaintenance" class="java.math.BigDecimal" isForPrompting="false">
+		<defaultValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></defaultValueExpression>
+	</parameter>
+	<parameter name="totalConservation" class="java.math.BigDecimal" isForPrompting="false">
+		<defaultValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></defaultValueExpression>
+	</parameter>
+	<parameter name="total" class="java.math.BigDecimal" isForPrompting="false">
+		<defaultValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></defaultValueExpression>
+	</parameter>
+	<parameter name="date" class="java.util.Date" isForPrompting="false">
+		<defaultValueExpression><![CDATA[new java.util.Date()]]></defaultValueExpression>
+	</parameter>
+	<parameter name="totalWater" class="java.math.BigDecimal" isForPrompting="false">
+		<defaultValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></defaultValueExpression>
+	</parameter>
+	<parameter name="totalLight" class="java.math.BigDecimal" isForPrompting="false">
+		<defaultValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></defaultValueExpression>
+	</parameter>
+	<parameter name="totalPaper" class="java.math.BigDecimal" isForPrompting="false">
+		<defaultValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></defaultValueExpression>
+	</parameter>
+	<parameter name="totalTransport" class="java.math.BigDecimal" isForPrompting="false">
+		<defaultValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></defaultValueExpression>
+	</parameter>
+	<parameter name="totalFood" class="java.math.BigDecimal" isForPrompting="false">
+		<defaultValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></defaultValueExpression>
+	</parameter>
+	<parameter name="totalOther" class="java.math.BigDecimal" isForPrompting="false">
+		<defaultValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></defaultValueExpression>
+	</parameter>
+	<parameter name="1MondayTithe" class="java.math.BigDecimal" isForPrompting="false">
+		<defaultValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></defaultValueExpression>
+	</parameter>
+	<parameter name="4MondayTithe" class="java.math.BigDecimal" isForPrompting="false">
+		<defaultValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></defaultValueExpression>
+	</parameter>
+	<parameter name="3MondayTithe" class="java.math.BigDecimal" isForPrompting="false">
+		<defaultValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></defaultValueExpression>
+	</parameter>
+	<parameter name="2MondayTithe" class="java.math.BigDecimal" isForPrompting="false">
+		<defaultValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></defaultValueExpression>
+	</parameter>
+	<parameter name="5MondayTithe" class="java.math.BigDecimal" isForPrompting="false">
+		<defaultValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></defaultValueExpression>
+	</parameter>
+	<parameter name="totalTithe" class="java.math.BigDecimal" isForPrompting="false">
+		<defaultValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></defaultValueExpression>
+	</parameter>
+	<parameter name="1MondayOffering" class="java.math.BigDecimal" isForPrompting="false">
+		<defaultValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></defaultValueExpression>
+	</parameter>
+	<parameter name="2MondayOffering" class="java.math.BigDecimal" isForPrompting="false">
+		<defaultValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></defaultValueExpression>
+	</parameter>
+	<parameter name="3MondayOffering" class="java.math.BigDecimal" isForPrompting="false">
+		<defaultValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></defaultValueExpression>
+	</parameter>
+	<parameter name="4MondayOffering" class="java.math.BigDecimal" isForPrompting="false">
+		<defaultValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></defaultValueExpression>
+	</parameter>
+	<parameter name="5MondayOffering" class="java.math.BigDecimal" isForPrompting="false">
+		<defaultValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></defaultValueExpression>
+	</parameter>
+	<parameter name="totalOffering" class="java.math.BigDecimal" isForPrompting="false">
+		<defaultValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></defaultValueExpression>
+	</parameter>
+	<parameter name="totalIncome" class="java.math.BigDecimal" isForPrompting="false">
+		<defaultValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></defaultValueExpression>
+	</parameter>
+	<parameter name="totalExpense" class="java.math.BigDecimal" isForPrompting="false">
+		<defaultValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="amount" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[amount]]></fieldDescription>
+	</field>
+	<field name="invoice" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[invoice]]></fieldDescription>
+	</field>
+	<field name="category" class="java.lang.String">
+		<fieldDescription><![CDATA[category]]></fieldDescription>
+	</field>
+	<variable name="amount_1" class="java.math.BigDecimal" resetType="Page" calculation="Sum">
+		<variableExpression><![CDATA[$F{amount}]]></variableExpression>
+	</variable>
+	<background>
+		<band height="752" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="208" width="572" height="437" uuid="9a655b6a-ee27-47bc-8af9-5d3d0efb1470"/>
+			</rectangle>
+			<line>
+				<reportElement x="464" y="208" width="1" height="437" uuid="3f31f156-5edd-4e4b-8b05-918d8fa655b3"/>
+			</line>
+		</band>
+	</background>
+	<title>
+		<band height="65" splitType="Stretch">
+			<staticText>
+				<reportElement x="1" y="0" width="571" height="25" uuid="05e9a386-232a-4e72-a1bd-3f95aaa56554"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[IGLESIA EVANGÉLICA MISIONERA MEXICANA, A. R.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="219" y="25" width="135" height="20" forecolor="#FF0000" uuid="658d3eac-2c14-454c-b54c-e20856e7b856"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SGAR/350/93]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="187" y="45" width="199" height="20" forecolor="#FF0000" uuid="466c5822-7ae6-4653-bb53-dff0df789f79"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[R.F.C: IEM9406238V1]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="50" splitType="Stretch">
+			<textField pattern="MMMMM">
+				<reportElement x="241" y="25" width="125" height="20" uuid="16545a3d-3179-4483-a5e9-332e614ae10d"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" markup="none">
+					<font fontName="Arial" size="14" isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{date}]]></textFieldExpression>
+			</textField>
+			<textField pattern="yyyy" isBlankWhenNull="false">
+				<reportElement mode="Transparent" x="446" y="25" width="39" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="43306d27-e70a-48e7-9a19-ac768d044865"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial Black" size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{date}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="571" height="25" uuid="98fd0d21-6301-4d40-93b9-59b72b5dd02d"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DECLARACIÓN DE INGRESOS Y EGRESOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="25" width="241" height="25" uuid="6e13ace5-86fe-43e3-94e9-5e01e17a9d13"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CORRESPONDIENTE AL MES:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="385" y="25" width="58" height="25" forecolor="#000000" backcolor="#FFFFFF" uuid="30135267-f8d8-435d-8143-d8c7e42738d0"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial Black" size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[AÑO:]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="93" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="7" width="572" height="1" uuid="0efb2df2-d04e-46b4-b7c6-1226ee42f7bf"/>
+			</line>
+			<staticText>
+				<reportElement x="143" y="16" width="287" height="53" uuid="e6dba5cf-89fb-4f93-9cdf-a4e1289ba01c"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="16" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[OTROS GASTOS DIVERSOS SIN FACTURA ELECTRONICA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="82" y="69" width="115" height="24" forecolor="#000000" backcolor="#FFFFFF" uuid="051a0ebf-0641-4bb3-85c9-a3995d05f639"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial Black" size="16" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[CONCEPTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="472" y="69" width="100" height="24" forecolor="#000000" backcolor="#FFFFFF" uuid="8f29df04-ee16-4e17-ae3a-1a37f12520f4"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial Black" size="16" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="40">
+			<textField>
+				<reportElement x="62" y="20" width="381" height="20" uuid="d0e16d01-436e-4e49-8cd8-6455ca8d02a3">
+					<printWhenExpression><![CDATA[$F{category} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{category}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="471" y="20" width="101" height="20" uuid="b9b8babe-eb32-477b-8d80-89f4fd7ab09e">
+					<printWhenExpression><![CDATA[$F{amount} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{amount}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="53" y="20" width="9" height="20" uuid="0507a488-3089-4162-9d4a-dc6adf3b4438">
+					<printWhenExpression><![CDATA[$F{invoice}]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[*]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="34" y="20" width="20" height="20" uuid="87282472-4f37-4f91-834c-efe73d1dd971"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT} + "."]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="62" y="36" width="381" height="1" uuid="83a5e214-444e-4094-8ecf-6e797f6781c2"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="20">
+			<staticText>
+				<reportElement x="302" y="0" width="161" height="20" uuid="bbd08ba6-cda0-47b5-af73-de46764bdc03"/>
+				<textElement>
+					<font fontName="Arial Black"/>
+				</textElement>
+				<text><![CDATA[TOTAL DE OTROS GASTOS]]></text>
+			</staticText>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="471" y="0" width="101" height="20" uuid="23734f84-df14-4831-93f4-3d0efb2c4f42"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{amount_1}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="0" width="572" height="1" uuid="86c3a3d0-0ad8-4090-a3ef-a5703568fcab"/>
+			</line>
+		</band>
+	</columnFooter>
+	<lastPageFooter>
+		<band height="107">
+			<staticText>
+				<reportElement x="310" y="55" width="133" height="20" uuid="6777028f-2046-452e-8eb5-493b91a1b99e"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="10" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[FIRMA DEL PASTOR]]></text>
+			</staticText>
+		</band>
+	</lastPageFooter>
+</jasperReport>

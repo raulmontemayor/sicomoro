@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="corte" language="groovy" pageWidth="396" pageHeight="612" whenNoDataType="AllSectionsNoDetail" columnWidth="356" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="458a93b2-9c7c-49c4-956a-5bd2dadba4d0">
+	<property name="ireport.zoom" value="1.2100000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="total" class="java.math.BigDecimal" isForPrompting="false">
+		<defaultValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></defaultValueExpression>
+	</parameter>
+	<parameter name="date" class="java.util.Date" isForPrompting="false">
+		<defaultValueExpression><![CDATA[new java.util.Date()]]></defaultValueExpression>
+	</parameter>
+	<parameter name="totalIncome" class="java.math.BigDecimal" isForPrompting="false">
+		<defaultValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></defaultValueExpression>
+	</parameter>
+	<parameter name="lastTotal" class="java.math.BigDecimal" isForPrompting="false">
+		<defaultValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></defaultValueExpression>
+	</parameter>
+	<parameter name="totalExpense" class="java.math.BigDecimal" isForPrompting="false">
+		<defaultValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></defaultValueExpression>
+	</parameter>
+	<parameter name="lastDate" class="java.util.Date" isForPrompting="false">
+		<defaultValueExpression><![CDATA[new java.util.Date()]]></defaultValueExpression>
+	</parameter>
+	<parameter name="church" class="java.lang.String"/>
+	<parameter name="place" class="java.lang.String"/>
+	<background>
+		<band height="572" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="356" height="572" uuid="18ac5823-2e46-474d-88c6-8c070bbf46cb"/>
+			</rectangle>
+		</band>
+	</background>
+	<title>
+		<band height="87" splitType="Stretch">
+			<staticText>
+				<reportElement x="78" y="0" width="275" height="39" uuid="05e9a386-232a-4e72-a1bd-3f95aaa56554"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[IGLESIA EVANGÉLICA MISIONERA MEXICANA, A. R.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="78" y="39" width="135" height="20" forecolor="#FF0000" uuid="658d3eac-2c14-454c-b54c-e20856e7b856"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SGAR/350/93]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="213" y="39" width="143" height="20" forecolor="#FF0000" uuid="466c5822-7ae6-4653-bb53-dff0df789f79"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[R.F.C: IEM9406238V1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="54" y="59" width="299" height="14" uuid="b15e20d7-96ea-4472-959c-4230ab35c519"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Zacatecas No. 155  ·   Col. Rodríguez  ·  Cd. Reynosa, Tamps.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="139" y="73" width="100" height="14" uuid="7163330a-1fad-4839-951c-77631e37081c"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[C.P. 88630]]></text>
+			</staticText>
+			<image>
+				<reportElement x="7" y="4" width="71" height="55" uuid="45a83c54-5f83-4c42-ad4c-2b8812251700"/>
+				<imageExpression><![CDATA["/home/raul/IEMM/logo.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="163" splitType="Stretch">
+			<staticText>
+				<reportElement x="60" y="15" width="55" height="20" uuid="093427c4-9afb-48b7-b082-787f51c0e45e"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[IGLESIA:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="60" y="43" width="45" height="20" uuid="d99c74b8-7800-4ae3-8511-a74968620f05"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LUGAR:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="107" y="73" width="44" height="20" uuid="32c852ee-2712-4af9-bab2-23991ac9ed44"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MES:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="109" width="356" height="54" uuid="31309863-e685-4d01-af29-35304e4ac4c5"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" markup="none">
+					<font fontName="Arial" size="36" isBold="true" isUnderline="false" isStrikeThrough="false"/>
+					<paragraph lineSpacing="Single" lineSpacingSize="1.0"/>
+				</textElement>
+				<text><![CDATA[CORTE DE CAJA]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="105" width="356" height="1" uuid="e9041ab2-7a07-4670-b3c4-26f6083db498"/>
+			</line>
+			<line>
+				<reportElement x="0" y="108" width="356" height="1" uuid="c155a64e-d8e2-4286-8edb-6331e5896ee2"/>
+			</line>
+			<line>
+				<reportElement x="0" y="1" width="356" height="1" uuid="0efb2df2-d04e-46b4-b7c6-1226ee42f7bf"/>
+			</line>
+			<line>
+				<reportElement x="0" y="4" width="356" height="1" uuid="d3fa06aa-f8a0-431b-ba9b-9f2242ae9b21"/>
+			</line>
+			<textField>
+				<reportElement x="115" y="15" width="210" height="20" uuid="358d73ca-988d-44d6-ba41-7f3f683e8a42"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" markup="none">
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{church}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="105" y="43" width="210" height="20" uuid="46980ebb-e881-4f2f-adc4-98212376e526"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" markup="none">
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{place}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MMMM yyyy">
+				<reportElement x="151" y="73" width="125" height="20" uuid="16545a3d-3179-4483-a5e9-332e614ae10d"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" markup="none">
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{date}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="159" width="356" height="1" uuid="d86c9baf-0888-41c6-b4f2-cbbf3f6ea86e"/>
+			</line>
+			<line>
+				<reportElement x="0" y="162" width="356" height="1" uuid="f9fbbae2-fbf4-4045-a7b2-2b2d71b4189b"/>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="322" splitType="Stretch">
+			<textField pattern="$ #,##0.00">
+				<reportElement mode="Transparent" x="239" y="24" width="100" height="16" forecolor="#000000" backcolor="#FFFFFF" uuid="01ea560e-2e4b-4732-afb7-69b2b3876cee"/>
+				<box leftPadding="5">
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="10" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalIncome}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="128" y="252" width="100" height="20" uuid="6c188e65-8510-4335-9765-49d060381bca"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[T E S O R E R O]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="24" width="122" height="16" uuid="47e203c0-a3b0-43e1-a627-835823e03284"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INGRESOS DEL MES DE]]></text>
+			</staticText>
+			<textField pattern="MMMMM &apos;&apos;yy:">
+				<reportElement mode="Transparent" x="139" y="24" width="94" height="16" forecolor="#000000" backcolor="#FFFFFF" uuid="e36f45f6-0e4b-4ffd-838e-3040ae85232f"/>
+				<box leftPadding="5">
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="10" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{date}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="17" y="57" width="187" height="16" uuid="5d1d2a96-86c3-486e-bf69-82169fa2e4e1"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DINERO EN EFECTIVO EN CAJA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="82" width="24" height="16" uuid="ab4c528c-b00b-4e70-bdc8-1de207c49460"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[AL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="68" y="82" width="24" height="16" uuid="e197ad23-d7a4-44bb-a973-1339f20faa2d"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DE]]></text>
+			</staticText>
+			<textField pattern="$ #,##0.00">
+				<reportElement mode="Transparent" x="239" y="82" width="100" height="16" forecolor="#000000" backcolor="#FFFFFF" uuid="b10f5fa9-09e6-4e90-b745-2bf5a93cf57a"/>
+				<box leftPadding="5">
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="10" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{lastTotal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="151" y="110" width="41" height="16" uuid="13c80ed7-53a4-402b-85dd-d063a3385d59"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SUMA:]]></text>
+			</staticText>
+			<textField pattern="$ #,##0.00">
+				<reportElement mode="Transparent" x="239" y="110" width="100" height="16" forecolor="#000000" backcolor="#FFFFFF" uuid="7aaae917-bab0-41dd-9e50-2f850157b8c6"/>
+				<box leftPadding="5">
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="10" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{lastTotal}.add($P{totalIncome})]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="17" y="155" width="104" height="16" uuid="347f511b-45ca-460c-9b6e-751f4693b291"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EGRESOS DEL MES]]></text>
+			</staticText>
+			<textField pattern="$ #,##0.00">
+				<reportElement mode="Transparent" x="239" y="155" width="100" height="16" forecolor="#000000" backcolor="#FFFFFF" uuid="e4b78926-895b-4124-90bb-8b397457487a"/>
+				<box leftPadding="5">
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="10" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalExpense}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="17" y="183" width="61" height="16" uuid="68119c4a-7629-4673-8f38-0e503f0330d8"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SALDO AL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="105" y="183" width="24" height="16" uuid="4bba4f05-5edd-4f52-bf0c-892219c93bd0"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DE]]></text>
+			</staticText>
+			<textField pattern="$ #,##0.00">
+				<reportElement mode="Transparent" x="239" y="183" width="100" height="16" forecolor="#000000" backcolor="#FFFFFF" uuid="84f735f6-d668-4461-8284-716972ef9565"/>
+				<box leftPadding="5">
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="10" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{lastTotal}.add($P{totalIncome}).subtract($P{totalExpense})]]></textFieldExpression>
+			</textField>
+			<textField pattern="MMMMM yyyy:">
+				<reportElement mode="Transparent" x="131" y="183" width="106" height="16" forecolor="#000000" backcolor="#FFFFFF" uuid="a6563830-6812-4c24-8fd5-7da8d01bff18"/>
+				<box leftPadding="5">
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="10" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{date}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd">
+				<reportElement mode="Transparent" x="78" y="183" width="27" height="16" forecolor="#000000" backcolor="#FFFFFF" uuid="a5435db6-4dcd-48a4-916e-97d008432374"/>
+				<box leftPadding="5">
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="10" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{date}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="88" y="302" width="180" height="1" uuid="fe59802d-e781-4999-a1d2-6aceef5629ab"/>
+			</line>
+			<textField pattern="MMMMM yyyy:">
+				<reportElement mode="Transparent" x="122" y="155" width="106" height="16" forecolor="#000000" backcolor="#FFFFFF" uuid="a95d2625-8656-454e-bbd5-9679908c558c"/>
+				<box leftPadding="5">
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="10" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{date}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd">
+				<reportElement mode="Transparent" x="41" y="82" width="27" height="16" forecolor="#000000" backcolor="#FFFFFF" uuid="fd533fb9-2e8c-46c9-9b7c-03b159a31792"/>
+				<box leftPadding="5">
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="10" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{lastDate}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MMMMM &apos;DE&apos; yyyy:">
+				<reportElement mode="Transparent" x="92" y="82" width="88" height="16" forecolor="#000000" backcolor="#FFFFFF" uuid="16f4169e-5e9a-430f-a75a-91e5a31ff57c"/>
+				<box leftPadding="5">
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="10" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{lastDate}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+</jasperReport>

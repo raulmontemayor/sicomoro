@@ -1,145 +1,168 @@
 package org.iemm.sicomoro.service;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
-import org.iemm.sicomoro.db.client.MovementMapper;
-import org.iemm.sicomoro.db.client.MovementTypeMapper;
-import org.iemm.sicomoro.db.dao.Movement;
-import org.iemm.sicomoro.db.dao.MovementCut;
-import org.iemm.sicomoro.db.dao.MovementExample;
-import org.iemm.sicomoro.db.dao.MovementType;
-import org.iemm.sicomoro.db.dao.MovementTypeExample;
-import org.iemm.sicomoro.exception.BussinesLogicException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.iemm.sicomoro.db.dto.MovementDTO;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-@Service
 public class MovementService {
 
-	@Autowired
-	private MovementMapper movementMapper;
+	private Logger LOG = LoggerFactory.getLogger(MovementService.class);
 
-	@Autowired
-	private MovementTypeMapper movementTypeMapper;
-	
-	@Autowired
-	private MovementCutService movementCutService;
-
-	public enum MovementTypeE {
-		UP("Alta"), DOWN("Baja"), TITHE("Diezmo")  ;
-		MovementTypeE(String name) {
-			this.name = name;
+	public List<MovementDTO> getIncomeList(List<MovementDTO> listofMovement) {
+		final List<MovementDTO> result = new ArrayList<MovementDTO>();
+		for (MovementDTO movementDTO : listofMovement) {
+			if (movementDTO.getType().equals("income")) {
+				result.add(movementDTO);
+			}
 		}
-		private String name;
+		return result;
 	}
 
-	/**
-	 * Inserta un movimiento
-	 * @param amount
-	 * @param movementType
-	 * @return
-	 * @throws BussinesLogicException 
-	 */
-	public int createMovement( BigDecimal amount, Integer idContributor, Date movementDate, String description, MovementTypeE movementType) throws BussinesLogicException {
-		final Movement movement = new Movement();
-		
-		// Si es diezmo validar que idContributor no sea null
-		if(MovementTypeE.TITHE.equals(movementType)) {
-			if(idContributor == null){
-				throw new BussinesLogicException("movement.error.titheContributor");
+	public List<MovementDTO> getOfferingList(List<MovementDTO> listofMovement) {
+		final List<MovementDTO> result = new ArrayList<MovementDTO>();
+		for (MovementDTO movementDTO : listofMovement) {
+			if (movementDTO.getCategory().equals("Ofrenda")) {
+				result.add(movementDTO);
+			}
+		}
+		return result;
+	}
+
+	public List<MovementDTO> getExpenseList(List<MovementDTO> listofMovement) {
+		final List<MovementDTO> result = new ArrayList<MovementDTO>();
+		for (MovementDTO movementDTO : listofMovement) {
+			if (movementDTO.getType().equals("expense")) {
+				result.add(movementDTO);
+			}
+		}
+		return result;
+	}
+
+	public List<MovementDTO> getTitheList(List<MovementDTO> listofMovement) {
+		final List<MovementDTO> result = new ArrayList<MovementDTO>();
+		for (MovementDTO movementDTO : listofMovement) {
+			if (!movementDTO.getCategory().equals("Ofrenda")) {
+				result.add(movementDTO);
+			}
+		}
+		return result;
+	}
+
+	public List<MovementDTO> getTaxList(List<MovementDTO> listofMovement) {
+		final List<MovementDTO> result = new ArrayList<MovementDTO>();
+		final BigDecimal totalAmount = sumAmount(listofMovement);
+		final MovementDTO taxMovement = new MovementDTO();
+		taxMovement.setDate(new Date());
+		taxMovement.setAmount(totalAmount.multiply(new BigDecimal("0.23"))
+				.setScale(0, RoundingMode.HALF_DOWN));
+		taxMovement.setCategory("Aportación 23%");
+		taxMovement.setType("expense");
+		taxMovement.setInvoice(true);
+		result.add(taxMovement);
+		return result;
+	}
+
+	public BigDecimal sumAmount(List<MovementDTO> listofMovement) {
+		BigDecimal result = BigDecimal.ZERO;
+		for (MovementDTO movementDTO : listofMovement) {
+			result = result.add(movementDTO.getAmount());
+		}
+		return result;
+	}
+	
+	public List<MovementDTO> getMaintenanceList(List<MovementDTO> listofMovement) {
+		final List<MovementDTO> result = new ArrayList<MovementDTO>();
+		for (MovementDTO movementDTO : listofMovement) {
+			if (movementDTO.getCategory().equals("Manutención") || movementDTO.getCategory().equals("Ayuda Transporte") || movementDTO.getCategory().equals("Amor")) {
+				result.add(movementDTO);
+			}
+		}
+		return result;
+	}
+	
+	public List<MovementDTO> getConservationList(List<MovementDTO> listofMovement) {
+		final List<MovementDTO> result = new ArrayList<MovementDTO>();
+		for (MovementDTO movementDTO : listofMovement) {
+			if (movementDTO.getCategory().equals("Conservación")) {
+				result.add(movementDTO);
+			}
+		}
+		return result;
+	}
+	
+	public List<MovementDTO> getWaterList(List<MovementDTO> listofMovement) {
+		final List<MovementDTO> result = new ArrayList<MovementDTO>();
+		for (MovementDTO movementDTO : listofMovement) {
+			if (movementDTO.getCategory().equals("Agua") || movementDTO.getCategory().equals("Agua Templo")
+					|| movementDTO.getCategory().equals("Agua Casa Pastoral")) {
+				result.add(movementDTO);
+			}
+		}
+		return result;
+	}
+	
+	public List<MovementDTO> getLightList(List<MovementDTO> listofMovement) {
+		final List<MovementDTO> result = new ArrayList<MovementDTO>();
+		for (MovementDTO movementDTO : listofMovement) {
+			if (movementDTO.getCategory().equals("Luz") || movementDTO.getCategory().equals("Luz Templo")
+					|| movementDTO.getCategory().equals("Luz Casa Pastoral")) {
+				result.add(movementDTO);
+			}
+		}
+		return result;
+	}
+	
+	public List<MovementDTO> getPaperList(List<MovementDTO> listofMovement) {
+		final List<MovementDTO> result = new ArrayList<MovementDTO>();
+		for (MovementDTO movementDTO : listofMovement) {
+			if (movementDTO.getCategory().equals("Copias") || movementDTO.getCategory().equals("Papelería")) {
+				result.add(movementDTO);
+			}
+		}
+		return result;
+	}
+	
+	public List<MovementDTO> getTransportList(List<MovementDTO> listofMovement) {
+		final List<MovementDTO> result = new ArrayList<MovementDTO>();
+		for (MovementDTO movementDTO : listofMovement) { //TODO revisar que coincida las categorías
+			if (movementDTO.getCategory().equals("Transportación")) {
+				result.add(movementDTO);
+			}
+		}
+		return result;
+	}
+	
+	public List<MovementDTO> getFoodList(List<MovementDTO> listofMovement) {
+		final List<MovementDTO> result = new ArrayList<MovementDTO>();
+		for (MovementDTO movementDTO : listofMovement) { //TODO revisar que coincida las categorías
+			if (movementDTO.getCategory().equals("Refrigerio")) {
+				result.add(movementDTO);
+			}
+		}
+		return result;
+	}
+	
+	public Map<Date, List<MovementDTO>> groupByDay(
+			List<MovementDTO> titheList) {
+		final Map<Date, List<MovementDTO>> result = new LinkedHashMap<Date, List<MovementDTO>>();
+		for (MovementDTO movementDTO : titheList) {
+			final Date date = movementDTO.getDate();
+			if(result.containsKey(date)) {
+				result.get(date).add(movementDTO);
 			} else {
-				movement.setIdContributor(idContributor);
+				final List<MovementDTO> list = new ArrayList<MovementDTO>();
+				list.add(movementDTO);
+				result.put(date, list);
 			}
 		}
-		final MovementCut lastMovementCut = movementCutService.getLastMovementCut();
-		if (lastMovementCut != null) {
-			if (lastMovementCut.getCutDate().after(movementDate)) {
-				throw new BussinesLogicException("movement.error.date");
-			}
-		}
-		movement.setMovementDate(movementDate);
-		movement.setIdMovementType(getMovementTypeId(movementType));
-		movement.setAmount(amount);
-		movement.setDescription(description);
-		final Date actual = new Date();
-		movement.setCreateDate(actual);
-		movement.setUpdateDate(actual);
-		return movementMapper.insert(movement);
+		return result;
 	}
-
-	/**
-	 * Regresa el id del tipo de movimiento
-	 * @param movementType
-	 * @return
-	 */
-	public Integer getMovementTypeId(MovementTypeE movementType) {
-		final MovementTypeExample example = new MovementTypeExample();
-		example.createCriteria().andNameEqualTo(movementType.name);
-		List<MovementType> lstMovementType = movementTypeMapper.selectByExample(example);
-		return lstMovementType.get(0).getIdMovementType();
-	}
-	
-	public List<Movement> getMovementsWithoutCut() {
-		final MovementExample example = new MovementExample();
-		example.createCriteria().andIdMovementCutIsNull();
-		example.setOrderByClause("movementDate");
-		return movementMapper.selectByExample(example);
-
-	}
-	
-	public void update(Movement movement) {
-		movement.setUpdateDate(new Date());
-		movementMapper.updateByPrimaryKey(movement);
-	}
-	
-	public Movement find(Integer idMovement){
-		return movementMapper.selectByPrimaryKey(idMovement);
-	}
-
-	/**
-	 * @return the movementMapper
-	 */
-	public MovementMapper getMovementMapper() {
-		return movementMapper;
-	}
-
-	/**
-	 * @param movementMapper
-	 *            the movementMapper to set
-	 */
-	public void setMovementMapper(MovementMapper movementMapper) {
-		this.movementMapper = movementMapper;
-	}
-
-	/**
-	 * @return the movementTypeMapper
-	 */
-	public MovementTypeMapper getMovementTypeMapper() {
-		return movementTypeMapper;
-	}
-
-	/**
-	 * @param movementTypeMapper
-	 *            the movementTypeMapper to set
-	 */
-	public void setMovementTypeMapper(MovementTypeMapper movementTypeMapper) {
-		this.movementTypeMapper = movementTypeMapper;
-	}
-
-	/**
-	 * @return the movementCutService
-	 */
-	public MovementCutService getMovementCutService() {
-		return movementCutService;
-	}
-
-	/**
-	 * @param movementCutService the movementCutService to set
-	 */
-	public void setMovementCutService(MovementCutService movementCutService) {
-		this.movementCutService = movementCutService;
-	}
-
 }

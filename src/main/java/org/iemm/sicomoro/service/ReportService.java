@@ -1,6 +1,8 @@
 package org.iemm.sicomoro.service;
 
+import java.io.File;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -27,6 +29,8 @@ public class ReportService {
 	private MovementService movementService = new MovementService();
 
 	public void getReports(BigDecimal lastTotal, List<MovementDTO> listofMovement) {
+		
+		new File(getFolder(listofMovement.get(0).getDate())).mkdirs();
 
 		final List<MovementDTO> incomeList = movementService.getIncomeList(listofMovement);
 		final BigDecimal totalIncome = movementService.sumAmount(incomeList);
@@ -76,7 +80,7 @@ public class ReportService {
 
 			final JasperPrint jasperPrint = JasperFillManager.fillReport(
 					report, parameters);
-			JasperExportManager.exportReportToPdfFile(jasperPrint, "/home/raul/ingresos.pdf");
+			JasperExportManager.exportReportToPdfFile(jasperPrint, getFolder(offeringList.get(0).getDate()) + "/ingresos.pdf");
 
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
@@ -135,7 +139,7 @@ public class ReportService {
 
 			final JasperPrint jasperPrint = JasperFillManager.fillReport(
 					report, parameters);
-			JasperExportManager.exportReportToPdfFile(jasperPrint, "/home/raul/egresos.pdf");
+			JasperExportManager.exportReportToPdfFile(jasperPrint, getFolder(expenseList.get(0).getDate()) + "/egresos.pdf");
 
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
@@ -223,7 +227,7 @@ public class ReportService {
 
 			final JasperPrint jasperPrint = JasperFillManager.fillReport(
 					report, parameters);
-			JasperExportManager.exportReportToPdfFile(jasperPrint, "/home/raul/invoice.pdf");
+			JasperExportManager.exportReportToPdfFile(jasperPrint, getFolder(expenseList.get(0).getDate()) + "/invoice.pdf");
 
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
@@ -261,7 +265,7 @@ public class ReportService {
 
 			final JasperPrint jasperPrint = JasperFillManager.fillReport(
 					report, parameters, ds);
-			JasperExportManager.exportReportToPdfFile(jasperPrint, "/home/raul/noinvoice.pdf");
+			JasperExportManager.exportReportToPdfFile(jasperPrint, getFolder(expenseList.get(0).getDate()) + "/noinvoice.pdf");
 
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
@@ -298,7 +302,7 @@ public class ReportService {
 
 			JasperPrint jasperPrint = JasperFillManager.fillReport(
 					report, parameters);
-			JasperExportManager.exportReportToPdfFile(jasperPrint, "/home/raul/manutencion.pdf");
+			JasperExportManager.exportReportToPdfFile(jasperPrint, getFolder(maintenanceList.get(0).getDate()) + "/manutencion.pdf");
 			
 			if(generarOtro) {
 				parameters.put("name", ConfigService.getConfig().getString("minister.second"));
@@ -306,7 +310,7 @@ public class ReportService {
 				parameters.put("cantidadLetra", NumberToLetterConverter.convertNumberToLetter(total.subtract(new BigDecimal(6000)).doubleValue()));
 				jasperPrint = JasperFillManager.fillReport(
 						report, parameters);
-				JasperExportManager.exportReportToPdfFile(jasperPrint, "/home/raul/manutencion2.pdf");
+				JasperExportManager.exportReportToPdfFile(jasperPrint, getFolder(maintenanceList.get(0).getDate()) + "/manutencion2.pdf");
 			}
 
 		} catch (Exception e) {
@@ -342,7 +346,7 @@ public class ReportService {
 
 			final JasperPrint jasperPrint = JasperFillManager.fillReport(
 					report, parameters);
-			JasperExportManager.exportReportToPdfFile(jasperPrint, "/home/raul/corte.pdf");
+			JasperExportManager.exportReportToPdfFile(jasperPrint, getFolder(incomeList.get(0).getDate())+ "/corte.pdf");
 			
 
 
@@ -366,7 +370,7 @@ public class ReportService {
 
 			final JasperPrint jasperPrint = JasperFillManager.fillReport(
 					report, parameters, ds);
-			JasperExportManager.exportReportToPdfFile(jasperPrint, "/home/raul/diezmadores.pdf");
+			JasperExportManager.exportReportToPdfFile(jasperPrint, getFolder(thiteList.get(0).getDate()) + "/diezmadores.pdf");
 			
 
 
@@ -383,6 +387,11 @@ public class ReportService {
 		return result;
 	}
 
+	private String getFolder(Date date) {
+		final SimpleDateFormat sdf = new SimpleDateFormat("yyyyMM");
+		return System.getProperty("user.home") + "/.sicomoro/" + sdf.format(date);
+		
+	}
 
 
 

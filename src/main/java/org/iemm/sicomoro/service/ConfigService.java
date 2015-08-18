@@ -17,21 +17,23 @@ public class ConfigService {
 	
 	private final CompositeConfiguration CONFIG = new CompositeConfiguration();
 	private final static ConfigService INSTANCE = new ConfigService();
-	private final PropertiesConfiguration configuration = new PropertiesConfiguration();
+	private PropertiesConfiguration configuration = null;
+	private PropertiesConfiguration defaultConfig = null;
 	
 	private ConfigService() {
 		try {
 			final File file = new File(CONFIG_FILE_NAME);
-			if (file.exists()) {
-				configuration.load("default-preferences.properties");
-				configuration.load(CONFIG_FILE_NAME);
-				CONFIG.addConfiguration(configuration);
-			} else {
-				final PropertiesConfiguration configuration = new PropertiesConfiguration();
-				configuration.load("default-preferences.properties");
-				configuration.save(CONFIG_FILE_NAME);
-				CONFIG.addConfiguration(configuration);
+			if(!file.exists()) {
+				configuration = new PropertiesConfiguration("default-preferences.properties");
+				configuration.setFileName(CONFIG_FILE_NAME);
+				configuration.save();
 			}
+			configuration = new PropertiesConfiguration(CONFIG_FILE_NAME);
+			CONFIG.addConfiguration(configuration);
+			
+			defaultConfig = new PropertiesConfiguration("default-preferences.properties");
+			CONFIG.addConfiguration(defaultConfig);
+
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
 		}
@@ -43,7 +45,7 @@ public class ConfigService {
 	
 	public static void saveConfig(String key, Object value) {
 		try {
-			INSTANCE.configuration.addProperty(key, value);
+			INSTANCE.configuration.setProperty(key, value);
 			INSTANCE.configuration.save(CONFIG_FILE_NAME);
 		} catch (ConfigurationException e) {
 			LOG.error(e.getMessage(), e);

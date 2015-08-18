@@ -4,7 +4,7 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.math.BigDecimal;
+import java.io.PrintStream;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -13,11 +13,14 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import org.iemm.sicomoro.db.dto.MovementDTO;
 import org.iemm.sicomoro.service.ConfigService;
+import org.iemm.sicomoro.service.MovementService;
 import org.iemm.sicomoro.service.ParseFileService;
 import org.iemm.sicomoro.service.ReportService;
 
@@ -42,6 +45,7 @@ public class Main {
      */
     private void createAndShowGUI() {
         //Create and set up the window.
+    	ConfigService.getConfig();
     	
     	fileChooser = new JFileChooser();
     	fileChooser.setFileFilter(new FileNameExtensionFilter("Archivo de excel", "xlsx", "xls", "csv"));
@@ -70,11 +74,7 @@ public class Main {
         field.setEditable(false);
         mainFrame.getContentPane().add(field);
         mainFrame.getContentPane().add(loadBtn);
-        mainFrame.getContentPane().add(processBtn);
-        
-        
-
-        
+        mainFrame.getContentPane().add(processBtn);       
  
         //Display the window.
        // frame.pack();
@@ -95,7 +95,7 @@ public class Main {
 			final ParseFileService parseFileService = new ParseFileService();
 			final List<MovementDTO> listofMovement = parseFileService.parse(new File(field.getText()));
 			final ReportService reportService = new ReportService();
-			reportService.getReports(ConfigService.getConfig().getBigDecimal("last.total"), listofMovement);
+			reportService.getReports(new MovementService().getLastTotal(listofMovement.get(0).getDate()), listofMovement);
 		}
     }
     

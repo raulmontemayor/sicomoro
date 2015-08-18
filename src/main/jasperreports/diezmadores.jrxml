@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="diezmadores" language="groovy" pageWidth="612" pageHeight="792" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenResourceMissingType="Empty" uuid="458a93b2-9c7c-49c4-956a-5bd2dadba4d0">
+	<property name="ireport.zoom" value="1.331000000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="date" class="java.util.Date" isForPrompting="false">
+		<defaultValueExpression><![CDATA[new java.util.Date()]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="amount" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[amount]]></fieldDescription>
+	</field>
+	<field name="category" class="java.lang.String">
+		<fieldDescription><![CDATA[category]]></fieldDescription>
+	</field>
+	<variable name="amount_1" class="java.math.BigDecimal" resetType="Page" calculation="Sum">
+		<variableExpression><![CDATA[$F{amount}]]></variableExpression>
+	</variable>
+	<variable name="amount_2" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{amount}]]></variableExpression>
+	</variable>
+	<title>
+		<band height="65" splitType="Stretch">
+			<staticText>
+				<reportElement x="1" y="0" width="571" height="25" uuid="05e9a386-232a-4e72-a1bd-3f95aaa56554"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[IGLESIA EVANGÉLICA MISIONERA MEXICANA, A. R.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="219" y="25" width="135" height="20" forecolor="#FF0000" uuid="658d3eac-2c14-454c-b54c-e20856e7b856"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SGAR/350/93]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="187" y="45" width="199" height="20" forecolor="#FF0000" uuid="466c5822-7ae6-4653-bb53-dff0df789f79"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[R.F.C: IEM9406238V1]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="25" splitType="Stretch">
+			<textField pattern="MMMMM">
+				<reportElement x="326" y="0" width="125" height="20" uuid="fca98dc6-93c7-4d14-81c6-ac4fdcca1479"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" markup="none">
+					<font fontName="Arial" size="14" isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{date}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="85" y="0" width="241" height="25" uuid="dae6aa99-3dd3-4159-b826-87fe7fde7eaf"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DIEZMADORES DEL MES:]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="20">
+			<textField>
+				<reportElement x="0" y="0" width="242" height="20" uuid="9c5a9124-2b1f-4d1c-b4ed-f92de5c08bde"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{category}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="242" y="0" width="101" height="20" uuid="400ca77e-b275-46f8-9b53-76293584fe03">
+					<printWhenExpression><![CDATA[$F{amount} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{amount}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="20">
+			<textField pattern="¤ #,##0.00" isBlankWhenNull="false">
+				<reportElement mode="Transparent" x="242" y="0" width="101" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="0a31a424-b139-4654-b841-04ad14af52d1"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{amount_2}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="125" y="0" width="117" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="5a2e294b-2730-4282-9dbd-1ce43c6fe657"/>
+				<box rightPadding="5"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="10" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[TOTAL:]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

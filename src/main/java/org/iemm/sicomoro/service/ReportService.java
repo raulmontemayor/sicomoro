@@ -30,7 +30,7 @@ public class ReportService {
 
 		final List<MovementDTO> incomeList = movementService.getIncomeList(listofMovement);
 		final BigDecimal totalIncome = movementService.sumAmount(incomeList);
-		LOG.debug("generateReport() totalIncome {}", totalIncome);
+		LOG.debug("--getReports() totalIncome {}", totalIncome);
 		final List<MovementDTO> offeringList = movementService.getOfferingList(incomeList);
 
 		final List<MovementDTO> titheList = movementService.getTitheList(incomeList);
@@ -52,6 +52,8 @@ public class ReportService {
 		getMaintenanceReport(movementService.getMaintenanceList(expenseList));
 
 		getCutReport(lastTotal, incomeList, expenseList);
+		
+		getTitherReport(titheList);
 
 	}
 	
@@ -61,10 +63,10 @@ public class ReportService {
 			final JasperReport report = (JasperReport) JRLoader
 					.loadObject(ClassLoader.getSystemResourceAsStream("ingresos.jasper"));
 			final BigDecimal totalOffering = movementService.sumAmount(offeringList);
-			LOG.debug("generateReport() totalOffering {}", totalOffering);
+			LOG.debug("--getIncomeReport() totalOffering {}", totalOffering);
 
 			final BigDecimal totalTithe = movementService.sumAmount(titheList);
-			LOG.debug("generateReport() totalTithe {}", totalTithe);
+			LOG.debug("--getIncomeReport() totalTithe {}", totalTithe);
 
 			final Map<String, Object> parameters = getDefaultParams();
 			parameters.put("totalOffering", totalOffering);
@@ -86,7 +88,7 @@ public class ReportService {
 			final JasperReport report = (JasperReport) JRLoader
 					.loadObject(ClassLoader.getSystemResourceAsStream("egresos.jasper"));
 			final BigDecimal totalExpense = movementService.sumAmount(expenseList);
-			LOG.debug("generateReport() totalExpense {}", totalExpense);
+			LOG.debug("--getExpenseReport() totalExpense {}", totalExpense);
 			
 			final List<MovementDTO> maintenanceList = movementService.getMaintenanceList(expenseList);
 			final BigDecimal totalMaintenance = movementService.sumAmount(maintenanceList);
@@ -273,7 +275,7 @@ public class ReportService {
 			final JasperReport report = (JasperReport) JRLoader
 					.loadObject(ClassLoader.getSystemResourceAsStream("manutencion.jasper"));
 			
-			final Map<String, Object> parameters = new HashMap<String, Object>();	
+			final Map<String, Object> parameters = getDefaultParams();	
 			final Calendar calendar = GregorianCalendar.getInstance();
 			calendar.setTime(maintenanceList.get(0).getDate());
 			calendar.set(Calendar.DATE, calendar.getActualMaximum(Calendar.DATE));
@@ -319,7 +321,7 @@ public class ReportService {
 			final JasperReport report = (JasperReport) JRLoader
 					.loadObject(ClassLoader.getSystemResourceAsStream("corte.jasper"));
 			
-			final Map<String, Object> parameters = new HashMap<String, Object>();	
+			final Map<String, Object> parameters = getDefaultParams();	
 			final Calendar calendar = GregorianCalendar.getInstance();
 			calendar.setTime(incomeList.get(0).getDate());
 			calendar.set(Calendar.DATE, calendar.getActualMaximum(Calendar.DATE));
@@ -335,12 +337,36 @@ public class ReportService {
 			final BigDecimal total = movementService.sumAmount(incomeList)
 					.subtract(movementService.sumAmount(expenseList))
 					.add(lastTotal);
-			ConfigService.saveConfig("last.total", total);
+			movementService.setLastTotal(incomeList.get(0).getDate(), total);
 
 
 			final JasperPrint jasperPrint = JasperFillManager.fillReport(
 					report, parameters);
 			JasperExportManager.exportReportToPdfFile(jasperPrint, "/home/raul/corte.pdf");
+			
+
+
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+		}
+		
+	}
+	
+	private void getTitherReport(List<MovementDTO> thiteList) {
+		try {
+			final JasperReport report = (JasperReport) JRLoader
+					.loadObject(ClassLoader.getSystemResourceAsStream("diezmadores.jasper"));
+			
+			final Map<String, Object> parameters = new HashMap<String, Object>();	
+			parameters.put("date", thiteList.get(0).getDate());
+			
+			final List<MovementDTO> groupedList = movementService.grouByCategory(thiteList);
+			
+			final JRBeanCollectionDataSource ds = new JRBeanCollectionDataSource(groupedList);
+
+			final JasperPrint jasperPrint = JasperFillManager.fillReport(
+					report, parameters, ds);
+			JasperExportManager.exportReportToPdfFile(jasperPrint, "/home/raul/diezmadores.pdf");
 			
 
 
